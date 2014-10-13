@@ -68,7 +68,7 @@ Unix Problem Set
     3. Go up one directory?
         - How many files does it contain?
         - How many directories?
-    4. Using your text editor create a fasta file and name it sequences.fasta. Make sure it ends up in the proper directory, locally or remotely.
+    4. Using your text editor (nano is a good one to start with) create a fasta file and name it sequences.fasta. Make sure it ends up in the proper directory, locally or remotely.
 
          This is fasta file format:
          >seqName description
