@@ -1,0 +1,24 @@
+==================
+Perl 1 Problem Set
+==================
+ 
+1. Start your first script. Make sure to include (exactly this, if it has extra white space or comments it will not work):
+#!/usr/bin/perl
+use strict;
+use warnings; 
+ 
+2. Write a script to print out "Hello New York";
+ 
+3. Store your name in a variable and print the contents of this variable.
+ 
+4. Create a print statement with tabs (\t) and newlines (\n)
+ 
+5. Create a print statement and use double quotes. 
+
+6. Create the same statement and use single quotes. Compare the output.
+	-- add \t and \n to each of these print statements
+  	-- add variables to each of these print statements
+	-- add a math statement (ex: 2+3)
+	-- how can you get your print statement to print 5 and not '2+3'.
+ 
+7. What is the difference between single and double quotes.

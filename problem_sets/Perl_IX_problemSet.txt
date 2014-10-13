@@ -1,0 +1,141 @@
+Perl IX: References Problem Set
+=============================== 
+ 
+1. Create an array, retrieve the reference(address), print the reference(address).
+    my @array = ('a' , 123, 'book' , 'end');
+2. Use the reference to print out the 2nd and 3rd elements.
+3. Create a hash, retrieve the reference (address), print the reference.
+4. Use the reference to print out a single key/value pair.
+5. Create a hash of hashes ( The value of book is really an anonymous hash)
+
+Use the "one at a time method" (see notes for more info), 
+     $favs{'book'}{'Year'}=1994, 
+      
+
+This hash will be called %favs.
+
+$VAR1 = {
+          'book' => { 
+                        'Name'   => "Midnight in the Garden of Good and Evil",
+                        'Author' => "John Berendt",
+                        'Type'   => "non-fiction",
+                        'Year'   => 1994
+          
+           },
+ 
+           'song' => { 
+                        'Name'   => "She Blinded Me with Science",
+                        'Artist' => "Thomas Dolby",
+                        'Album'  => "Blinded by Science",
+                        'Year'   => 1982
+           }, 
+}
+6. Use Data::Dumper and its function Dumper to print out the hash to the screen (STDOUT).
+7. Retrieve the value of your favorite song's name.
+8. Retrieve the value of your favorite book's type.
+9. Print out the entire hash using a foreach loop. 
+10. Reset your favorite book to something new. Make sure to change all the related information.
+11. Print out the entire hash using a foreach loop to visualize your changed book information. 
+
+SEQUENCE INFO REFERENCES PROBLEM SET CONTINUED
+
+ 
+1. Modify your FASTA parser to create a hash of genes and store
+    a. The sequenceID as a hash key (geneName)
+    b. The sequence description as a inner key to geneName.
+    c. The sequence as a inner key to the same key (geneName).
+    d. The sequence length as a inner key to the same key (geneName).
+    Hint: This is now a hash of hashes. The value of gene is really an anonymous hash.
+ 
+$VAR1 = {
+          'gene1' => { 
+                        'seq' => "ATTC",
+                        'desc' => 'the is a great seq',
+                        'len' => 4,
+           },
+ 
+           'gene2' => { 
+                        'seq' => "TTTT",
+                        'desc' => 'the is a better seq',
+                        'len' => 4,
+ 
+            },
+    };
+ 
+ 
+2. Use Data::Dumper and its function Dumper to print out the hash to the screen (STDOUT).
+ 
+3. Print out each gene and its information in a tab-delimited file (FILEHANDLE).
+	a. Using a foreach loop, iterate through each key (sequenceID).
+	b. Use key to iterate thru each inner key (seq desc, seq, length) and retrieve the values.
+	c. print out all data delimited by tabs (\t).
+		ex: seq1\tmy favorite gene\tATGCTGGGG\t9\n" 
+	d. What about the header line ("Name\tDesc\tSeq\tlen\n")? Where do you need to print this so that it appears first and only once in your output.
+ 
+ 
+4. Calculate and store the count of each nucleotide for each seq.
+ 	**** hint: $genes{$seqName}{'nt_count'}{$nt}=$count;
+	**** hint: %gene is now a hash of hashes of hashes.
+	a. Nucleotide count {'nt_count'} will be another value of the gene key. It is not a variable, it is a string. $genes{$seqName}{'nt_count'}
+ 
+$VAR1 = {
+          'gene1' => { 
+                        'seq' => "ATTC",
+                        'len' => 4,
+                        'desc' => 'the is a great seq',
+                        'nt_count' => { 
+                            'a' => '1',
+                            't' => '2'
+                            'C' => '1'
+                          },
+           },
+ 
+           'gene2' => { 
+                        'seq' => "TTTT",
+                        'len' => 4,
+                        'desc' => 'the is a better seq',
+                        'nt_count' => { 
+                            't' => '4',
+                          },
+ 
+ 
+            },
+    };
+ 
+ 
+5. Calculate and add %GC content for each sequence to the hash for each gene as an additional value to the gene name key.
+	a. Create a GC_content subroutine. 
+ 	b. Call the subroutine on each sequence 
+	   my $GC = GC_content($seq);
+	c. Use your already stored seq length and 'G' and 'C' total counts to calculate GC content
+	d. Store the calculated %GC content as an additional value to gene key.
+	e. use Data::Dumper to visualize your hash.
+ 
+6. Print out only high %GC content sequences to a file called highGC.fasta in FASTA format.
+	a. Create a subroutine called GC_filter.
+	b. GC_filter takes the hash of genes and a minimum %GC cutoff. 
+	c. GC_filter returns the number of sequences that met your %GC cutoff criteria or have a higher GC%.
+	d. GC_filter also returns an array of arrays made up of gene names and sequences ([geneName,seq],[geneName,seq],[geneName,seq]).
+	e. Example usage:  
+	   my ($count, $array_of_arrays) = GC_filter (\%genes , 55);
+ 
+$VAR1 = {
+          'gene10' => { 
+                        'seq' => "GCAT",
+                        'len' => 4,
+                        'desc' => 'the is a super seq',
+                        'nt_count' => { 
+                            'a' => '1',
+                            't' => '1'
+                            'C' => '1'
+                            'G' => '1'
+                          },
+                         'GC'   => '50',
+           },
+}
+ 
+ 
+7. Print out each gene and ALL of its information in a new tab-delimited file (FILEHANDLE).
+	a. Using foreach loops, iterate through each level of the hash of hashes of hashes.
+	b. print output to a new file called all.txt in with this format:
+	"seq1\tDesc\tGC%\tA:count,T:count,C:count,T:count\tsequence\n"

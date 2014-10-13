@@ -1,0 +1,69 @@
+Perl IV Problem Set
+==================
+1. Iterate through each element of this array using a foreach loop: (101,2,15,22,95,33,2,27,72,15,52);
+   - Print out only the values that are even (use modulus operator).
+
+2. Iterate through each of the elements of the above array, but sort them numerically.
+   - Print each element.
+   - Create two cumulative sums, one of all the even values and one of all the odd values. 
+   - Print the two sums.
+
+3. Iterate through each element in the this array (101,2,15,22,95,33,2,27,72,15,52) using a for loop.
+   - Print only the values of the indices that are odd  
+
+4. Using the sort() function with numbers
+   - Sort the array with the default sort function and store the new sorted array.
+   - print out the array. Are they sorted numerically?
+   - customize the sort function to sort the numbers numerically, and store the new sorted array.
+   - print out the array. Are they sorted numerically?
+   - reverse the numeric sort (hint, switch $a and $b), and store the new sorted array.
+   - print out the array. Are they sorted numerically, biggest to smallest?
+
+5. Using pop, push, shift, unshift with this array (101,2,15,22,95,33,2,27,72,15,52)
+   - use pop on this array. Store the result of pop in a variable. Print the contents of this variable. Print the array. How is the array different from before the use of pop?
+   - use shift on the original array. Store the result of shift in a variable. Print the contents of this variable. Print the array. How is the array different from before the use of shift?
+   - use push on the original array with the number 12. Print the array. How is the array different from before the use of push?
+   - use unshift on the original array with the number 4. Print the array. How is the array different from before the use of unshift?
+
+6.  Run this code. Is its output what you expect? Why?
+                  for (my $i = 0; $i < 10; $i++) {
+                   if ($i = 2) {
+                       print "\$i = $i\n";
+                   }
+                  }
+
+
+7. Using the sort function with strings: use this array: ('ATGCCCGGCCCGGC','GCGTGCTAGCAATACGATAAACCGG', 'ATATATATCGAT','ATGGGCCC') 
+  - 
+
+8. Calculate GC content of one sequence
+	Turn a ONE of the above DNA strings into an array with split()
+	Use a foreach loop to look at each nucleotide in turn
+	Calculate total length of the sequence
+	Keep a running total of C's and G's
+	Print the calculated GC content as a percent.
+
+9. Place your GC content calculator code into an array, and calculate the GC content of each of the sequences in the above array. 
+ 
+
+10. Create a shuffled sequence
+  Turn a DNA string into an array with split()
+  Use a for loop to perform the following procedure N times (N = length of seq)
+    Select a random position A with rand()
+    Select a random position B with rand()
+    Exchange the letters at array indices A and B
+    (remember you can reassign any value in an array: $array[4] = "new value";)
+  Print the now shuffled sequence
+  
+ 
+11a. Start with 2 very similar DNA sequences. 
+  Align with ClustalW, TCoffee, or some other web alignment application. 
+  Output should be in FASTA format.
+  Store (copy and paste) the sequence, including dashes, from each ClustalW fasta output in a separate string variable inside your script.
+  Turn each string into an array with split()
+  Use a for loop to compare each index for nucleotide differences.
+  Report the nucleotide position of each difference.
+ 
+11b. Do the same as above but instead of coping and pasting into string variables
+import from a file.
+ 

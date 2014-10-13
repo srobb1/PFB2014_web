@@ -1,0 +1,45 @@
+Perl V Problem Set
+====================
+1. Create a hash of your favorite 5 genes and their nucleotide sequences, using the "all at once" method, see below as well as the lecture notes. Make the genes the keys and the sequences the values.
+  All at once:
+  %hash = ( 
+       key1 => value1, 
+       key2 => value2, 
+       key3 => value3 
+    ); 
+ 
+2. Create a the same hash with your favorite 5 genes and their nucleotide sequences, using the "one at a time" method, see below as well as the lecture notes. Make the genes the keys and the sequences the values.
+  One at a time:
+  my %hash;
+  $hash{key1} = value1; 
+  $hash{key2} = value2;
+  $hash{key3} = value3; 
+
+ 
+3. With a foreach loop, iterate through each key (gene name) of your hash.
+  - Print each key and value in this format "gene:seq\n";
+  - Are the genes printing in the order you added them to the hash? Why?
+ 
+4. After printing the hash in the above question, reassign one of the sequences to be AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA. Print out the hash again.
+
+5. Use the included file "Perl_V.genesAndSeq.txt". Open file and build hash with the first column for your key and the second for your value.
+ 
+6. With a foreach loop, iterate through each key (gene name) of your hash.
+  - Calculate the length of each seq
+  - Print each key and value in this format "key:value\n"; (gene:seq_len)
+ 
+7. Create your hash with gene names and sequences from a FASTA file (Perl_V.fasta). You will have to parse out the gene names and sequences from the file.
+ 
+
+8. With a foreach loop, iterate through each gene name (key) in your hash.
+  - Print each key/value pair. "gene:seq\n"
+  - Now, add a sort (default) of the keys and print each value.
+  - Now, sort (numeric, smallest to biggest) by the length of the sequence, and print each key/value pair as well as the length of the sequence.
+  - Now, sort biggest to smallest. Print each key/value pair as well the length of the sequence
+ 
+ 
+9. In a new script, determine and report the codon usage for a DNA sequence
+  - Create a string containing a DNA sequence
+  - Within a for loop 
+    - use the function substr ($seq, $offset, 3) to extract codons
+    - store each codon and the number of times it has occurred in a hash

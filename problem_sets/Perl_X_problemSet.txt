@@ -1,0 +1,15 @@
+Perl X Problem Set
+====================
+1. Take a look at the Statistics::Descriptive module on cpan.
+2. Write a script that uses the methods in Statistics::Descriptive to calculate the standard deviation, median, min, and max of the following numbers:
+ 
+                 12,-13,-12,7,11,-4,-12,9,6,7,-9
+ 
+Optional questions:
+ 
+3.Add a method to Microarray.pm called expression() which returns the expression value.
+ 
+4. Currently, calling $a = $m->gene() gets the value of gene in the object $m. Modify the gene() method such that if you call gene() with an argument, it will set the value of gene to be that argument.
+eg:
+$m->gene('FOXP1');  # this should set gene name to 'FOXP1'
+print $m->gene();   # this should print the value 'FOXP1'

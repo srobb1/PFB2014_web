@@ -1,0 +1,159 @@
+BODY {
+   background-color: #FFFFFF;
+   font-family: sans-serif;
+}
+
+H1,H2,H3,H4,P,LI,UL,OL,DD,DT,ADDRESS,DL,A,STRONG  {
+    font-family: sans-serif;
+    background-color: transparent
+}
+PRE {
+    font-family: monospace;
+    font-size: 12pt;
+}
+CODE {
+   font-family: monospace;
+   font-size: medium;
+}
+TD.code {
+   font-family: monospace;
+   background: rgb(220,220,220);
+}
+
+.announcements {
+/*  background-color: #8c8578;*/
+    background: #B9E2E5;
+	padding: 15px;
+	list-style-type: none;
+}
+
+TD.time {
+   valign: top;
+   background: #e8d0a9;
+}
+TR.workshop,TD.workshop {
+/*   background: #b7afa3;*/
+   background: #f4f3ee;
+   font-family: sans-serif;
+   padding: 0;
+   margin: 0;
+}
+TR.lecture,TD.lecture {
+/*   background: #fdeecb; */
+   background: #b7afa3;
+   font-family: sans-serif;
+   padding: 0;
+   margin: 0;
+}
+TR.guest_lecture,TD.guest_lecture {
+   background: #a2adbc;
+/*   background: #f5fafa;*/
+   font-family: sans-serif;
+   padding: 0;
+   margin: 0;
+}
+TR.special,TD.special {
+/*   background: #f0e4ce;*/
+   background: #B9E2E5;
+   font-family: sans-serif;
+   padding: 0;
+   margin: 0;
+}
+
+TR.meal,TD.meal {
+   background: #d9e2e1;
+/*   background: #f5fafa; */
+   font-family: sans-serif;
+   padding: 0;
+   margin: 0;
+}
+
+TR.party,TD.party {
+   background: #B9E2E5;
+/*   background: #d9e2e1; */
+   font-family: sans-serif;
+   padding: 0;
+   margin: 0;
+}
+TH.day {
+   font-family: sans-serif;
+   background: #250801;
+   align: left;
+   padding: 0;
+   margin: 0;
+	color: #fff;
+}
+INPUT {
+    background-color: #FFFFFF
+}
+H1 {
+    color: #3b1609;
+    align: center;
+    font-size: 24pt;
+    background-color: white
+}
+
+img {
+	border-style: none;
+	float: left;
+	padding: 20px;
+}
+
+#header {
+	display: inline-block;
+}
+
+#announcements {
+	padding-bottom: 10px;
+}
+
+#announcements ul.announcements li {
+	padding: 10px;
+	border-top: 1px solid #fff;
+}
+TH {
+    font-family: sans-serif;
+    background: #d9e2e1;
+    padding: 0;
+    margin: 0;
+}
+TD {
+    font-family: sans-serif;
+    padding: 5;
+    margin: 0;
+}
+TH.small {
+    font-family: sans-serif;
+    font-size: 10pt;
+    padding: 0;
+    margin: 0;
+}
+TD.small {
+    font-family: sans-serif;
+    font-size: 10pt;
+    background-color: #f5fafa;
+    padding: 0;
+    margin: 0;
+}
+TD.smallwhite {
+    font-family: sans-serif;
+    font-size: 10pt;
+    padding: 0;
+    margin: 0;
+}
+TD.pre {
+    font-family: monospace;
+}
+.caption {
+    color: red;
+}
+.code {
+	font-family: monospace;
+}
+I.code {
+   font-family: sans-serif;
+}
+
+table {
+	width: 100%;
+}

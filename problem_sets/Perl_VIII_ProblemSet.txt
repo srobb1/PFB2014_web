@@ -1,0 +1,39 @@
+Perl VIII - Modules - Problem Set
+
+1. Download and install a module using CPAN
+
+	On the iMac in front of you, open a Terminal window and type the following:
+
+	$ sudo cpan
+	password is your password
+
+	CPAN should ask if you want to configure automatically. Say YES.
+	Once it's done configuring, you should get a cpan prompt like this:
+
+	cpan>
+
+	Type the following to install the module Math::Round:
+
+	cpan> install Math::Round
+
+	then, once it's installed, write a short script that uses the round() to round any numbers
+	entered as arguments on the command line.
+
+
+2. Take the subroutine that you created in the subroutines problem set, and make it into a module.
+
+3. Modify your script from the subroutines problem set so that it now calls that subroutine from the module.
+
+4. Modify the module to automatically export the subroutine by default.
+
+5. (optional bonus question) Write a script to read FASTA files. Make a module with four subroutines.
+
+	Each subroutine will take a FASTA sequence as input. Then, write one subroutine for each of the following:
+
+	- getting the name (sequence ID) of the sequence
+	- getting the description of the sequence
+	- getting the sequence itself
+	- reformatting the sequence to be a user-specified number of characters
+	  per line
+
+ 
