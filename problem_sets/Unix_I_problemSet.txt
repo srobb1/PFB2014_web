@@ -62,33 +62,37 @@ text editors:
 Unix Problem Set
 ================
 
-    Using your text editor create a fasta file and name it sequences.fasta. Make sure it ends up in the proper directory, locally or remotely.
-
-    This is fasta file format:
-    >seqName description
-    ATGGCGTCTTGGCCTTAAAAGCTC
 
     1. Log into your machine or account. 
     2. What is the full path to your home directory?
     3. Go up one directory?
         - How many files does it contain?
         - How many directories?
-    4. Without using a text editor examine the contents of the file sequences.fasta.
+    4. Using your text editor create a fasta file and name it sequences.fasta. Make sure it ends up in the proper directory, locally or remotely.
+
+         This is fasta file format:
+         >seqName description
+         ATGGCGTCTTGGCCTTAAAAGCTC
+ 
+    5. Without using a text editor examine the contents of the file sequences.fasta.
         - How many lines does this file contain?   
         - How many characters?    (Hint: check out the options of wc)
         - What is the first line of this file?    (Hint: read the man page of head)
         - What are the last 3 lines?    (Hint: read the man page of tail)
         - How many sequences are in the file?    (Hint: use grep)
-    5. Rename sequences.fasta to something more informative of the sequences the file contains. (Hint: read the man page for mv)
+    
 
-    6. Create a directory called fasta.     (Hint: use mkdir)
-    7. Copy the fasta file that you renamed to the fasta directory. (Hint: use cp)
-    8. Verify that the file is within the fasta directory.    (Hint: use ls fasta/)
-    9. Delete the the original file that you used for copying.    (Hint: use rm, be careful)
-    10. Read the man page for rm and cp to find out how to remove and copy a directory.
-    11. Print out your history and redirect it to a file called unixBasics.history.txt
+    6. Rename sequences.fasta to something more informative of the sequences the file contains. (Hint: read the man page for mv)
 
-    12. In /home/pfb2014/data there is a file called: cuffdiff.txt <a href="problem_sets/files/cuffdiff.txt">test</a>
+
+    7. Create a directory called fasta.     (Hint: use mkdir)
+    8. Copy the fasta file that you renamed to the fasta directory. (Hint: use cp)
+    9. Verify that the file is within the fasta directory.    (Hint: use ls fasta/)
+    10. Delete the the original file that you used for copying.    (Hint: use rm, be careful)
+    11. Read the man page for rm and cp to find out how to remove and copy a directory.
+    12. Print out your history and redirect it to a file called unixBasics.history.txt
+
+    13. In /home/pfb2014/data there is a file called: cuffdiff.txt 
         - the descriptions of each column in the file are below
 	- look at the first few lines of the file
 	- sort the file by log fold change 'log2(fold_change)', from highest to lowest, and save in a new file in your directory called sorted.cuffdiff.out
@@ -101,19 +105,20 @@ Cuffdiff file format
 --------------------
 Column number    Column name       Example           Description
 1                Tested id         XLOC_000001       A unique identifier describing the transcipt, gene, primary transcript, or CDS being tested
-2                gene              Lypla1            The gene_name(s) or gene_id(s) being tested
-3                locus             chr1:4797771-4835363    Genomic coordinates for easy browsing to the genes or transcripts being tested.
-4                sample 1          Liver             Label (or number if no labels provided) of the first sample being tested
-5                sample 2          Brain             Label (or number if no labels provided) of the second sample being tested
-6                Test status       NOTEST            Can be one of OK (test successful), NOTEST (not enough alignments for testing),
+2                Tested id         XLOC_000001       A unique identifier describing the transcipt, gene, primary transcript, or CDS being tested
+3                gene              Lypla1            The gene_name(s) or gene_id(s) being tested
+4                locus             chr1:4797771-4835363    Genomic coordinates for easy browsing to the genes or transcripts being tested.
+5                sample 1          Liver             Label (or number if no labels provided) of the first sample being tested
+6                sample 2          Brain             Label (or number if no labels provided) of the second sample being tested
+7                Test status       NOTEST            Can be one of OK (test successful), NOTEST (not enough alignments for testing),
                                                        LOWDATA (too complex or shallowly sequenced), HIDATA (too many fragments in locus), or FAIL,
                                                        when an ill-conditioned covariance matrix or other numerical exception prevents testing.
-7                FPKMx             8.01089           FPKM of the gene in sample x
-8                FPKMy             8.551545          FPKM of the gene in sample y
-9                log2(FPKMy/FPKMx) 0.06531           The (base 2) log of the fold change y/x    
-10               test stat         0.860902          The value of the test statistic used to compute significance of the observed change in FPKM
-11               p value           0.389292          The uncorrected p-value of the test statistic
-12               q value           0.985216          The FDR-adjusted p-value of the test statistic
-13               significant       no                Can be either "yes" or "no", depending on whether p is greater then the FDR after
+8                FPKMx             8.01089           FPKM of the gene in sample x
+9                FPKMy             8.551545          FPKM of the gene in sample y
+10                log2(FPKMy/FPKMx) 0.06531           The (base 2) log of the fold change y/x    
+11               test stat         0.860902          The value of the test statistic used to compute significance of the observed change in FPKM
+12               p value           0.389292          The uncorrected p-value of the test statistic
+13               q value           0.985216          The FDR-adjusted p-value of the test statistic
+14               significant       no                Can be either "yes" or "no", depending on whether p is greater then the FDR after
                                                      Benjamini-Hochberg correction for multiple-testing
 
