@@ -48,6 +48,7 @@ Perl III Problem Set
  
 ** You can look up how to use the index() and warn() functions in your books, google, or from the command line with the perldoc command, or on perldoc.org.
 
+**** EXTRA CREDIT *** 
 6.  Create a file of numbers call numbers.txt with the following content:
 
 22
