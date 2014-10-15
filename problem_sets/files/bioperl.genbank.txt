@@ -1,0 +1,280 @@
+LOCUS       NM_152291               2467 bp    mRNA    linear   PRI 02-OCT-2011
+DEFINITION  Homo sapiens mucin 7, secreted (MUC7), transcript variant 3, mRNA.
+ACCESSION   NM_152291
+VERSION     NM_152291.2  GI:222418644
+KEYWORDS    .
+SOURCE      Homo sapiens (human)
+  ORGANISM  Homo sapiens
+            Eukaryota; Metazoa; Chordata; Craniata; Vertebrata; Euteleostomi;
+            Mammalia; Eutheria; Euarchontoglires; Primates; Haplorrhini;
+            Catarrhini; Hominidae; Homo.
+REFERENCE   1  (bases 1 to 2467)
+  AUTHORS   Heath,A.C., Whitfield,J.B., Martin,N.G., Pergadia,M.L., Goate,A.M.,
+            Lind,P.A., McEvoy,B.P., Schrage,A.J., Grant,J.D., Chou,Y.L.,
+            Zhu,R., Henders,A.K., Medland,S.E., Gordon,S.D., Nelson,E.C.,
+            Agrawal,A., Nyholt,D.R., Bucholz,K.K., Madden,P.A. and
+            Montgomery,G.W.
+  TITLE     A quantitative-trait genome-wide association study of alcoholism
+            risk in the community: findings and implications
+  JOURNAL   Biol. Psychiatry 70 (6), 513-518 (2011)
+   PUBMED   21529783
+REFERENCE   2  (bases 1 to 2467)
+  AUTHORS   Carrara,S., Cangi,M.G., Arcidiacono,P.G., Perri,F., Petrone,M.C.,
+            Mezzi,G., Boemo,C., Talarico,A., Cin,E.D., Grassini,G., Doglioni,C.
+            and Testoni,P.A.
+  TITLE     Mucin expression pattern in pancreatic diseases: findings from
+            EUS-guided fine-needle aspiration biopsies
+  JOURNAL   Am. J. Gastroenterol. 106 (7), 1359-1363 (2011)
+   PUBMED   21647207
+  REMARK    GeneRIF: MUC7 expression in ductal adenocarcinoma (DAC) and chronic
+            pancreatitis was not statistically significant, but MUC7 could be
+            considered as potential marker of malignant lesions, especially in
+            pancreatic DAC, as it was positive in 73% of these cases.
+REFERENCE   3  (bases 1 to 2467)
+  AUTHORS   Han,S., Lan,Q., Park,A.K., Lee,K.M., Park,S.K., Ahn,H.S.,
+            Shin,H.Y., Kang,H.J., Koo,H.H., Seo,J.J., Choi,J.E., Ahn,Y.O.,
+            Chanock,S.J., Kim,H., Rothman,N. and Kang,D.
+  TITLE     Polymorphisms in innate immunity genes and risk of childhood
+            leukemia
+  JOURNAL   Hum. Immunol. 71 (7), 727-730 (2010)
+   PUBMED   20438785
+  REMARK    GeneRIF: Observational study of gene-disease association and
+            gene-gene interaction. (HuGE Navigator)
+REFERENCE   4  (bases 1 to 2467)
+  AUTHORS   Schuurhof,A., Bont,L., Siezen,C.L., Hodemaekers,H., van
+            Houwelingen,H.C., Kimman,T.G., Hoebee,B., Kimpen,J.L. and
+            Janssen,R.
+  TITLE     Interleukin-9 polymorphism in infants with respiratory syncytial
+            virus infection: an opposite effect in boys and girls
+  JOURNAL   Pediatr. Pulmonol. 45 (6), 608-613 (2010)
+   PUBMED   20503287
+  REMARK    GeneRIF: Observational study of gene-disease association. (HuGE
+            Navigator)
+REFERENCE   5  (bases 1 to 2467)
+  AUTHORS   Habte,H.H., de Beer,C., Lotz,Z.E., Roux,P. and Mall,A.S.
+  TITLE     Anti-HIV-1 activity of salivary MUC5B and MUC7 mucins from HIV
+            patients with different CD4 counts
+  JOURNAL   Virol. J. 7, 269 (2010)
+   PUBMED   20946627
+  REMARK    GeneRIF: MUC5B and MUC7 from HIV patients, unlike the MUC5B and
+            MUC7 from HIV negative individuals, did not inhibit HIV-1 activity.
+            Publication Status: Online-Only
+REFERENCE   6  (bases 1 to 2467)
+  AUTHORS   Kirkbride,H.J., Bolscher,J.G., Nazmi,K., Vinall,L.E., Nash,M.W.,
+            Moss,F.M., Mitchell,D.M. and Swallow,D.M.
+  TITLE     Genetic polymorphism of MUC7: allele frequencies and association
+            with asthma
+  JOURNAL   Eur. J. Hum. Genet. 9 (5), 347-354 (2001)
+   PUBMED   11378823
+  REMARK    GeneRIF: Observational study of gene-disease association. (HuGE
+            Navigator)
+REFERENCE   7  (bases 1 to 2467)
+  AUTHORS   Prakobphol,A., Thomsson,K.A., Hansson,G.C., Rosen,S.D.,
+            Singer,M.S., Phillips,N.J., Medzihradszky,K.F., Burlingame,A.L.,
+            Leffler,H. and Fisher,S.J.
+  TITLE     Human low-molecular-weight salivary mucin expresses the sialyl
+            lewisx determinant and has L-selectin ligand activity
+  JOURNAL   Biochemistry 37 (14), 4916-4927 (1998)
+   PUBMED   9538010
+REFERENCE   8  (bases 1 to 2467)
+  AUTHORS   Troxler,R.F., Iontcheva,I., Oppenheim,F.G., Nunes,D.P. and
+            Offner,G.D.
+  TITLE     Molecular characterization of a major high molecular weight mucin
+            from human sublingual gland
+  JOURNAL   Glycobiology 7 (7), 965-973 (1997)
+   PUBMED   9363439
+REFERENCE   9  (bases 1 to 2467)
+  AUTHORS   Bobek,L.A., Liu,J., Sait,S.N., Shows,T.B., Bobek,Y.A. and
+            Levine,M.J.
+  TITLE     Structure and chromosomal localization of the human salivary mucin
+            gene, MUC7
+  JOURNAL   Genomics 31 (3), 277-282 (1996)
+   PUBMED   8838308
+REFERENCE   10 (bases 1 to 2467)
+  AUTHORS   Bobek,L.A., Tsai,H., Biesbrock,A.R. and Levine,M.J.
+  TITLE     Molecular cloning, sequence, and specificity of expression of the
+            gene encoding the low molecular weight human salivary mucin (MUC7)
+  JOURNAL   J. Biol. Chem. 268 (27), 20563-20569 (1993)
+   PUBMED   7690757
+COMMENT     REVIEWED REFSEQ: This record has been curated by NCBI staff. The
+            reference sequence was derived from DB206328.1, L13283.1 and
+            BC025688.1.
+            On Feb 3, 2009 this sequence version replaced gi:22748664.
+            
+            Summary: This gene encodes a small salivary mucin, which is thought
+            to play a role in facilitating the clearance of bacteria in the
+            oral cavity and to aid in mastication, speech, and swallowing. The
+            central domain of this glycoprotein contains tandem repeats, each
+            composed of 23 amino acids. The most common allele contains 6
+            repeats, and some alleles may be associated with susceptibility to
+            asthma. Alternatively spliced transcript variants with different 5'
+            UTR, but encoding the same protein, have been found for this
+            gene.[provided by RefSeq, Feb 2009].
+            
+            Transcript Variant: This variant (3) represents the shortest
+            transcript and has a different 5' UTR compared to transcript
+            variant 1. Transcript variants 1, 2 and 3 encode the same protein.
+            
+            Publication Note:  This RefSeq record includes a subset of the
+            publications that are available for this gene. Please see the Gene
+            record to access additional publications.
+            COMPLETENESS: complete on the 3' end.
+PRIMARY     REFSEQ_SPAN         PRIMARY_IDENTIFIER PRIMARY_SPAN        COMP
+            1-566               DB206328.1         1-566
+            567-1656            L13283.1           473-1562
+            1657-2467           BC025688.1         1555-2365
+FEATURES             Location/Qualifiers
+     source          1..2467
+                     /organism="Homo sapiens"
+                     /mol_type="mRNA"
+                     /db_xref="taxon:9606"
+                     /chromosome="4"
+                     /map="4q13.3"
+     gene            1..2467
+                     /gene="MUC7"
+                     /gene_synonym="MG2"
+                     /note="mucin 7, secreted"
+                     /db_xref="GeneID:4589"
+                     /db_xref="HGNC:7518"
+                     /db_xref="HPRD:11759"
+                     /db_xref="MIM:158375"
+     exon            1..175
+                     /gene="MUC7"
+                     /gene_synonym="MG2"
+                     /inference="alignment:Splign"
+                     /number=3a
+     misc_feature    149..151
+                     /gene="MUC7"
+                     /gene_synonym="MG2"
+                     /note="upstream in-frame stop codon"
+     exon            176..244
+                     /gene="MUC7"
+                     /gene_synonym="MG2"
+                     /inference="alignment:Splign"
+                     /number=4
+     CDS             191..1324
+                     /gene="MUC7"
+                     /gene_synonym="MG2"
+                     /note="mucin 7, salivary; mucin-7; MUC-7; apo-MG2;
+                     salivary mucin-7"
+                     /codon_start=1
+                     /product="mucin-7 precursor"
+                     /protein_id="NP_689504.2"
+                     /db_xref="GI:222418645"
+                     /db_xref="CCDS:CCDS3541.1"
+                     /db_xref="GeneID:4589"
+                     /db_xref="HGNC:7518"
+                     /db_xref="HPRD:11759"
+                     /db_xref="MIM:158375"
+                     /translation="MKTLPLFVCICALSACFSFSEGRERDHELRHRRHHHQSPKSHFE
+                     LPHYPGLLAHQKPFIRKSYKCLHKRCRPKLPPSPNNPPKFPNPHQPPKHPDKNSSVVN
+                     PTLVATTQIPSVTFPSASTKITTLPNVTFLPQNATTISSRENVNTSSSVATLAPVNSP
+                     APQDTTAAPPTPSATTPAPPSSSAPPETTAAPPTPSATTQAPPSSSAPPETTAAPPTP
+                     PATTPAPPSSSAPPETTAAPPTPSATTPAPLSSSAPPETTAVPPTPSATTLDPSSASA
+                     PPETTAAPPTPSATTPAPPSSPAPQETTAAPITTPNSSPTTLAPDTSETSAAPTHQTT
+                     TSVTTQTTTTKQPTSAPGQNKISRFLLYMKNLLNRIIDDMVEQ"
+     sig_peptide     191..256
+                     /gene="MUC7"
+                     /gene_synonym="MG2"
+     mat_peptide     257..1321
+                     /gene="MUC7"
+                     /gene_synonym="MG2"
+                     /product="mucin-7"
+     misc_feature    683..751
+                     /gene="MUC7"
+                     /gene_synonym="MG2"
+                     /experiment="experimental evidence, no additional details
+                     recorded"
+                     /note="1; propagated from UniProtKB/Swiss-Prot (Q8TAX7.2);
+                     Region: Repetitive region"
+     misc_feature    752..820
+                     /gene="MUC7"
+                     /gene_synonym="MG2"
+                     /experiment="experimental evidence, no additional details
+                     recorded"
+                     /note="2; propagated from UniProtKB/Swiss-Prot (Q8TAX7.2);
+                     Region: Repetitive region"
+     misc_feature    821..889
+                     /gene="MUC7"
+                     /gene_synonym="MG2"
+                     /experiment="experimental evidence, no additional details
+                     recorded"
+                     /note="3; propagated from UniProtKB/Swiss-Prot (Q8TAX7.2);
+                     Region: Repetitive region"
+     misc_feature    890..958
+                     /gene="MUC7"
+                     /gene_synonym="MG2"
+                     /experiment="experimental evidence, no additional details
+                     recorded"
+                     /note="4; propagated from UniProtKB/Swiss-Prot (Q8TAX7.2);
+                     Region: Repetitive region"
+     misc_feature    959..1027
+                     /gene="MUC7"
+                     /gene_synonym="MG2"
+                     /experiment="experimental evidence, no additional details
+                     recorded"
+                     /note="5; propagated from UniProtKB/Swiss-Prot (Q8TAX7.2);
+                     Region: Repetitive region"
+     misc_feature    1028..1096
+                     /gene="MUC7"
+                     /gene_synonym="MG2"
+                     /experiment="experimental evidence, no additional details
+                     recorded"
+                     /note="6; propagated from UniProtKB/Swiss-Prot (Q8TAX7.2);
+                     Region: Repetitive region"
+     exon            245..2443
+                     /gene="MUC7"
+                     /gene_synonym="MG2"
+                     /inference="alignment:Splign"
+                     /number=5
+     polyA_signal    2419..2424
+                     /gene="MUC7"
+                     /gene_synonym="MG2"
+     polyA_site      2443
+                     /gene="MUC7"
+                     /gene_synonym="MG2"
+ORIGIN      
+        1 ttatcttaaa tctaatagat ttcctatttc caaaaagctc gactggagtg ttataaaacc
+       61 tgaaaattct cttgtgcttt ctcttctttt gcttctagtt accatcctca aaggattggc
+      121 taaaagcaag caactggatt gaacacccta agaagaaaga ttcacactgc accaggagac
+      181 atcagaaaga atgaaaactc tgccgctgtt tgtgtgcatc tgtgcactga gtgcttgctt
+      241 ctcgttcagt gaaggtcgag aaagggatca tgaactacgt cacagaaggc atcatcacca
+      301 atcacccaaa tctcactttg aattaccaca ttatcctgga ctgctagctc accagaagcc
+      361 gttcattaga aagtcctata aatgtctgca caaacgctgt aggcctaagc ttccaccttc
+      421 acctaataac ccccccaaat tcccaaatcc tcaccagcca cctaaacatc cagataaaaa
+      481 tagcagtgtg gtcaacccta ccttagtggc tacaacccaa attccatctg tgactttccc
+      541 atcagcttcc accaaaatta ctacccttcc aaatgtgact tttcttcccc agaatgccac
+      601 caccatatct tcaagagaaa atgttaacac aagctcttct gtagctacat tagcaccagt
+      661 gaattcccca gctccacaag acaccacagc tgccccaccc acaccttctg caactacacc
+      721 agctccacca tcttcctcag ctccaccaga gaccacagct gccccaccca caccttctgc
+      781 aactacacaa gctccaccat cttcctcagc tccaccagag accacagctg ccccacccac
+      841 acctcctgca actacaccag ctccaccatc ttcctcagct ccaccagaga ccacagctgc
+      901 cccacccaca ccttctgcaa ctacaccagc tccactatct tcctcagctc caccagagac
+      961 cacagctgtc ccacccacac cttctgcaac taccctagac ccatcatccg cctcagctcc
+     1021 accagagacc acagctgccc cacccacacc ttctgcaact acaccagctc caccgtcttc
+     1081 cccagctcca caagagacca cagctgcccc aattaccaca cctaattctt ccccaactac
+     1141 tcttgcacct gacacttctg aaacttcagc tgcacccaca caccagacta ctacttcggt
+     1201 cactactcaa actactacta ctaaacaacc aacttcagct cctggccaaa ataaaatttc
+     1261 tcgatttctt ttatatatga agaatctact aaacagaatt attgacgaca tggtggagca
+     1321 atagtatatt gtatgttgta aagtgttctg tcatttacaa gatgtgattc atgagtgcag
+     1381 aactaccacc tttcttttag caccaatccc aacatgaaat tatattactc agatttaaag
+     1441 cactatcatt aatctttcaa tctaattatt caccaccaca agacctatta acaagacaaa
+     1501 atgcctctat cccacaagcc agatgcaggt ctggggttca aaataactct ttggatccta
+     1561 cagagatagc ctactgaggg caaagaaagt ccttagataa agagagaata ttgtatgggc
+     1621 catcaaccat ttacttttcc ctgaatgtta gaaactacaa aaccactacc ttgtaccccc
+     1681 atcaaaatcc cacctgaacc atctaatcct ataaacataa aggggtaaaa ttggaactct
+     1741 ccagatgaac aaagacatct aaatatctgt agatagaaac atttatctat ctaaatatat
+     1801 tgatagacct gtcattgtat tgattaatga caaaaccctt tagataatta tcttccattt
+     1861 taaataaaat tttatttcac aaatatgagc caagaaagag gaaagttgat ttgaagtgag
+     1921 gattagaagt gaatgacaat aaagtctggc agccaagcac gaaccaagac tggcactatt
+     1981 tttcttagtg tatataattg tttaaactgc aaggttgaca tttattgtgt tgtgtctaag
+     2041 ttaatttcga tctaatgtac ctgattctag cctctgtgaa caacaagaat atgtttgtgt
+     2101 atgttcacat ggtgcttata atatttcact atcaattcaa ttaattcaca taaattccat
+     2161 gtgaaatgta ttcaacaatg gaatattttc taaaacattt agtatacatt tgaatgtatt
+     2221 ttaaaccatg ccaaactact gctttaatgt caagtttgca gaattgtctc tgaaaataaa
+     2281 aaccctgact ttagttgtaa aacaataaaa gttagctact tggtatacgg agatgttaat
+     2341 ttgggatatg gaggcatttt tatcttctgt cactactact taaaactctg atgattatgt
+     2401 tagatttttt tgctaactaa taaagatttc aaatggcaat ttaaaaaaaa aaaaaaaaaa
+     2461 aaaaaaa
+//
+
