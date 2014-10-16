@@ -1,16 +1,10 @@
+
 Perl VIII - Modules - Problem Set
 
 1. Download and install a module using CPAN
 
-	On the iMac in front of you, open a Terminal window and type the following:
-
-	$ sudo cpan
-	password is your password
-
-	CPAN should ask if you want to configure automatically. Say YES.
-	Once it's done configuring, you should get a cpan prompt like this:
-
-	cpan>
+   Follow the instructions in the lecture notes for configuring cpan
+   the first time you run it.
 
 	Type the following to install the module Math::Round:
 

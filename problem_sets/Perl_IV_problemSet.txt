@@ -34,10 +34,11 @@ Perl IV Problem Set
 
 
 7. Using the sort function with strings: use this array: ('ATGCCCGGCCCGGC','GCGTGCTAGCAATACGATAAACCGG', 'ATATATATCGAT','ATGGGCCC') 
-  - 
+        Print the strings in sorted order, largest to smallest.
+        What would you change to reverse the printing order (ie print from smallest to largest)? 
 
 8. Calculate GC content of one sequence
-	Turn a ONE of the above DNA strings into an array with split()
+	Turn ONE of the above DNA strings into an array with split()
 	Use a foreach loop to look at each nucleotide in turn
 	Calculate total length of the sequence
 	Keep a running total of C's and G's
