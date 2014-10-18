@@ -1,0 +1,72 @@
+Perl II Problem Set:
+ 
+1. Create a script ("add.pl") that takes two numbers from the command line and adds them.
+   % add.pl 2 3
+ 
+   5
+ 
+2. Modify the "add.pl" script from the previous problem set so that it checks that both arguments are defined (hint, use function defined.)
+ 
+   % add.pl 2 3
+ 
+   5
+ 
+   % add.pl 2
+ 
+   Please provide two numbers.    
+ 
+3. Modify the script again so that it checks that both arguments are positive numbers. Zero is allowed, but -1 is not:
+ 
+  % add.pl 2 -3
+ 
+  Please provide two positive numbers.    
+ 
+4.   Write a script ("order.pl") to compare two strings given on the command line arguments and print "right order" if they are in alphabetic order, and "wrong order" if they are not:
+ 
+ % order.pl Fred Lucy
+ 
+ right order
+ 
+ % order.pl Lucy Fred
+ 
+ wrong order
+ 
+5.  Write a script ("reorder.pl") to compare two strings given on the command line and print them out in correct alphabetic order:
+ 
+ % reorder.pl Fred Lucy
+ 
+ Fred Lucy
+ 
+ % reorder.pl Lucy Fred
+ 
+  Fred Lucy
+ 
+6. Write a script named "same.pl" to read two strings from the terminal. Compare them in a case-sensitive manner and print "same" if they are the same, "different" if they are different:
+ 
+ % same.pl
+ 
+ Enter string 1: lucy
+ 
+ Enter string 2: Lucy
+ 
+ different
+ 
+7. Modify this script to compare the strings in a case-INsensitive manner (hint, use the "lc" or "uc" functions to change string to upper or lowercase.
+ 
+8.  Write a script named "percent.pl" to calculate percentages, where the percentage is $i/($i+$j) * 100. Make sure that the script does not crash when given two numbers that add up to zero:
+ 
+% percent.pl 50 150
+ 
+25%
+ 
+% percent.pl 50 -50
+ 
+You are trying to trick me! at line 4.
+ 
+9. Modify this script to use the printf() function to produce nicely formatted floating point numbers (hint:  try "man sprintf" and "man printf" or look it up online to learn about this wonderful function).
+ 
+% percent.pl 50 150
+ 
+25.00 %
+ 
+ 

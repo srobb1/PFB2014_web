@@ -1,0 +1,32 @@
+#!/usr/bin/perl
+use strict;
+use warnings;
+# 1. Start your first script. Make sure to include (exactly this): see above
+
+
+# 2. Write a script to print out "Hello New York";
+print "Hello New York\n";
+
+
+# 3. Store your name in a variable and print the contents of this variable.
+my $name = 'Peter Capaldi';
+print "$name\n";
+
+# 4. Create a print statement with tabs (\t) and newlines (\n)
+print "This is a tab char->\tand a newline char ends the current line and goes to the next->\n";
+
+
+# 5. Create a print statement and use double quotes. Create the same statement and use single quotes. Compare the outpu.t
+my $honey = 'brown sugar';
+print "This is a tab char->\tand a newline char ends the current line and goes to the next->\n2+3, and I love $honey\n\n";
+
+print 'This is a tab char->\tand a newline char ends the current line and goes to the next->\n2+3, but I love $honey\n\n';
+
+# Since the print function is expects a list (one or more scalars), we can get perl to perform math
+# by taking '2+3' out of the quotes and delimiting the surrounding strings by commas. Perl does not
+# recognize '2+3' within quotes as something it should do math on, because the characters composing
+# '2+3' are literal characters.
+print "This is a tab char->\tand a newline char ends the current line and goes to the next->\n",2+3,"\n, and I love $honey\n\n";
+
+# Double quotes allow what is called 'variable interpolation', or the substitution of a variable for
+# its value.

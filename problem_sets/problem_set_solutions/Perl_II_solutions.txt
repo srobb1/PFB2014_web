@@ -1,0 +1,261 @@
+Perl II Problem Set:
+ 
+1. Create a script ("add.pl") that takes two numbers from the command line and adds them.
+   % add.pl 2 3
+ 
+   5
+
+
+#!/usr/bin/perl
+use strict;
+use warnings;
+
+my $x = shift;
+my $y = shift;
+
+print $x + $y, "\n";
+
+
+ 
+2. Modify the "add.pl" script from the previous problem set so that it checks that both arguments are defined (hint, use function defined.)
+ 
+   % add.pl 2 3
+ 
+   5
+ 
+   % add.pl 2
+ 
+   Please provide two numbers.    
+
+
+
+#!/usr/bin/perl
+#File: add.pl                                                                                                                                                                                                
+#Author: Jessen Bredeson
+
+
+use strict;
+use warnings;
+
+my $x = shift;
+my $y = shift;
+
+if (! defined($x) or ! defined($y)) {
+    print "Please provide two positive numbers.\n";
+} else {
+    print $x + $y, "\n";
+}
+
+
+
+ 
+3. Modify the script again so that it checks that both arguments are positive numbers. Zero is allowed, but -1 is not:
+ 
+  % add.pl 2 -3
+ 
+  Please provide two positive numbers.    
+ 
+
+
+use strict;
+use warnings;
+
+my $x = shift;
+my $y = shift;
+
+if (! defined($x) or ! defined($y)) {
+    print "Please provide two positive numbers.\n";
+} elsif ($x < 0 or $y < 0) {
+    print "Please provide two positive numbers.\n";
+} else {
+    print $x + $y, "\n";
+}
+
+
+
+4.   Write a script ("order.pl") to compare two strings given on the command line arguments and print "right order" if they are in alphabetic order, and "wrong order" if they are not:
+ 
+ % order.pl Fred Lucy
+ 
+ right order
+ 
+ % order.pl Lucy Fred
+ 
+wrong order
+
+ 
+#!/usr/bin/perl
+#File: reorder.pl
+#Author: Jessen Bredeson
+
+use strict;
+use warnings;
+
+my $name1 = shift;
+my $name2 = shift;
+
+if (! defined($name1) or ! defined($name2)) {
+    print "Please provide two names.\n";
+} else {
+    # we want to use the cmp operator, which will return -1 if the left value sorts higher 
+    # (ascending), return 1 if the right value sorts higher, and 0 if they are equal.
+    if (($name1 cmp $name2) > 0) {
+    print "$name2 $name1\n"
+    } else {
+    print "$name1 $name2\n";
+    }
+}
+
+
+
+
+
+5.  Write a script ("reorder.pl") to compare two strings given on the command line and print them out in correct alphabetic order:
+ 
+ % reorder.pl Fred Lucy
+ 
+ Fred Lucy
+ 
+ % reorder.pl Lucy Fred
+ 
+  Fred Lucy
+ 
+
+#!/usr/bin/perl
+#File: reorder.pl
+#Author: Jessen Bredeson
+
+use strict;
+use warnings;
+
+my $name1 = shift;
+my $name2 = shift;
+
+if (! defined($name1) or ! defined($name2)) {
+    print "Please provide two names.\n";
+} else {
+    # we want to use the cmp operator, which will return -1 if the left value sorts higher 
+    # (ascending), return 1 if the right value sorts higher, and 0 if they are equal.
+    if (($name1 cmp $name2) > 0) {
+    print "$name2 $name1\n"
+    } else {
+    print "$name1 $name2\n";
+    }
+}
+
+
+
+
+6. Write a script named "same.pl" to read two strings from the terminal. Compare them in a case-sensitive manner and print "same" if they are the same, "different" if they are different:
+ 
+ % same.pl
+ 
+ Enter string 1: lucy
+ 
+ Enter string 2: Lucy
+ 
+ different
+ 
+
+#!/usr/bin/perl
+#File: same.pl
+#Author: Jessen Bredeson
+
+use strict;
+use warnings;
+
+my $string1 = shift;
+my $string2 = shift;
+
+if (! defined($string1) or ! defined($string2)) {
+   print "Please provide two strings to compare.\n";
+} elsif ($string1 eq $string2) {
+   print "same\n";
+} else {
+   print "different\n";
+}
+
+
+
+
+7. Modify this script to compare the strings in a case-INsensitive manner (hint, use the "lc" or "uc" functions to change string to upper or lowercase.
+
+
+#!/usr/bin/perl
+#File: same.pl
+#Author: Jessen Bredeson
+
+use strict;
+use warnings;
+
+my $string1 = shift;
+my $string2 = shift;
+
+if (! defined($string1) or ! defined($string2)) {
+   print "Please provide two strings to compare.\n";
+} elsif (uc($string1) eq uc($string2)) {
+   print "same\n";
+} else {
+   print "different\n";
+} 
+
+
+
+8.  Write a script named "percent.pl" to calculate percentages, where the percentage is $i/($i+$j) * 100. Make sure that the script does not crash when given two numbers that add up to zero:
+ 
+% percent.pl 50 150
+ 
+25%
+ 
+% percent.pl 50 -50
+ 
+You are trying to trick me! at line 4.
+ 
+
+#!/usr/bin/perl
+#File: percent.pl
+#Author: Jessen Bredeson
+
+use strict;
+use warnings;
+
+# we cannot use $a and $b here, as they are reserved global variables
+my $x = shift;
+my $y = shift;
+
+if (! defined($x) or ! defined($y)) {
+    print "Please provide two numbers.\n";
+} elsif (($x + $y) == 0) {
+    print "You are trying to trick me!\n";
+} else {
+    print 100 * ($x / ($x + $y)),"%\n";
+}
+
+
+
+
+9. Modify this script to use the printf() function to produce nicely formatted floating point numbers (hint:  try "man sprintf" and "man printf" or look it up online to learn about this wonderful function).
+ 
+% percent.pl 50 150
+ 
+25.00 %
+ 
+ 
+#!/usr/bin/perl
+#File: percent.pl
+#Author: Jessen Bredeson
+
+use strict;
+use warnings;
+
+# we cannot use $a and $b here, as they are reserved global variables
+my $x = shift;
+my $y = shift;
+
+if (! defined($x) or ! defined($y)) {
+    print "Please provide two numbers.\n";
+} elsif (($x + $y) == 0) {
+    print "You are trying to trick me!\n";
+} else {
+    printf "%0.2f%%\n", 100 * ($x / ($x + $y)),"%\n";
+}

@@ -1,0 +1,318 @@
+Perl III Problem Set
+====================
+ 
+1.  Create a script that divides two numbers provided on the command line.
+        Your script should have the following requirements:
+	Two numbers are required.
+	The numbers have to be positive.
+	The divisor cannot be zero.
+ 
+        You should take care of the following in your Perl script
+        =========================================================
+	Write the quotient to STDOUT
+	Write any errors to STDERR
+ 
+        You should take care of the following on the command line in UNIX
+        ==================================================================
+	Redirect STDOUT to an output file (out.txt)
+	Redirect STDERR to an error file (err.txt)
+ 
+
+#!usr/bin/perl                                                                                            
+
+use strict;
+use warnings;
+
+my $first = shift;
+my $second = shift;
+
+my $error = "divide_error.txt";
+my $divisor_out = 'divide.out';
+open (OUTFILE, '>',  $divisor_out) || die "Can't write to outfile: $!\n";
+open (STDERR, '>', $error) || die "Can't write to error: $!\n";
+
+if(not defined $first){
+  print "Please provide TWO numbers\n";
+}
+
+elsif(not defined $second){
+  print "Please provide TWO numbers\n";
+}
+elsif($second == 0){
+  print "Please DO NOT include 0 as your second number\n";
+}
+if(defined $first && defined $second){
+  if($first > 0 && $second > 0){
+      my $divisor = $first / $second;
+      print OUTFILE $divisor,"\n";
+    }
+else { 
+  print STDERR "Numbers CANNOT be negative!. \n";
+}
+} 
+
+# The proper way to redirect the various outputs of this script on the command-line:
+# divide.pl 2 3 >out.txt 2>err.txt
+
+
+
+
+2. Open a file using the open function.
+        As you read in lines from the file, make all the letters in each line uppercase.
+        (There's a built-in Perl function which will do this.)
+ 
+        Open a new file for output using the open function.
+	Write the output to this file 
+
+
+
+#!/usr/bin/perl                                                                                              
+## upper_case_file.pl                                                                                        
+
+use strict;
+use warnings;
+
+## get the filename argument for reading                                                                     
+#my $in_file = shift;                                                                                        
+
+## get the filename argument for writing                                                                     
+#my $out_file = shift;                                                                                       
+my $infile = 'perl_III_nobody.txt';
+my $outfile = 'uppercase.out';
+
+## open the filehandle to read from $in_file                                                                 
+open IN, "<", $infile or die "Error reading infile: $!\n";
+
+## open the filehandle to write to $out_file                                                                 
+open OUT, ">", $outfile or die "Error writing outfile: $!\n";
+
+## read each line from $in_file                                                                              
+while (my $line = <IN>) {
+
+  ## remove the newline                                                                                      
+  chomp $line;
+
+  ## make letters uppercase                                                                                  
+  my $upper_case_line = uc $line;
+
+  ## write the uppercase line to the $out_file                                                               
+  print OUT "$upper_case_line\n";
+
+
+
+
+3. Open the provided FASTA file. Print the reverse complement of each
+    sequence. Make sure to print the output in fasta format including
+    the sequence name and a note in the description that this is the
+    reverse complement. Print to STDOUT and capture the output into a file
+    with a command line redirect '>'.
+
+#!/usr/bin/perl
+#File: revcomp.pl
+#Author: Jessen Bredeson
+
+use strict;
+use warnings;
+
+my $infasta  = shift;
+my $outfasta = shift;
+if (! defined($infasta) or ! defined($outfasta)) {
+    die "Usage: revcomp.pl <in.fasta> <out.fasta>\n";
+} else {
+    open(IN, '<', $infasta) or die "Cannot open $infasta: $!\n";
+    open(OUT,'>',$outfasta) or die "Cannot open $outfasta: $!\n";
+    # defined some convenience global variables for use within the while loop
+    my $header;
+    my $sequence = '';
+    while (my $line = <IN>) {
+    chomp($line);
+    
+    if ($line =~ /^>/) {
+       # We have encountered the first fasta entry (more specifically its
+       # header) in the file, but we have not yet observed any sequence,
+       # this approach requires special handling:
+       	      if (length($sequence) > 0) {
+	      # if we have seen both a '>' and the length of the sequence 
+	      # is non-zero, we have accumulated a complete fasta entry 
+	      # print it out and clear the entry for the next sequence.
+	       print(OUT $header," reverse-complement\n",$sequence,"\n");
+	       $sequence = '';
+	       }
+		$header = $line; # header is updated with current sequence name
+		} else {
+		# grow the sequence as already reverse-complemented, which means
+		# extend the sequence to the left.
+		$line =~ tr/atcgATCG/tagcTAGC/;
+		$sequence = reverse($line).$sequence;
+		}
+    }
+    if (length($sequence) > 0) {
+    # we have reached the end of the file, but we still have the last
+    # fasta entry to print.  Above, printing out the current entry relied
+    # on observing the header of the next sequence, which is not available
+    # for the last sequence (as there are no more entries).
+      print(OUT $header," reverse-complement\n",$sequence,"\n");
+    }
+    close(OUT);
+    close(IN);
+}
+
+
+
+ 
+4. Open the provided FASTQ file. Go through each line of the file. Count
+    the number of lines and the number of characters per line.
+ 
+    Have your program report the:
+         a. total number of lines
+         b. total number of characters
+         c. average line length 
+
+
+#!/usr/bin/perl 
+use strict;   #infile = 'PerlIII.fastq'
+use warnings;
+
+my $infile = 'PerlIII.fastq';
+open IN, "<", $infile or die "Error reading infile: $!\n";
+
+
+my $number_of_lines = 0;
+my $total_length = 0;
+
+while (my $line =<IN>){
+      chomp $line;
+      $number_of_lines++;
+      my $length = length ($line);
+      my $total_length = $total_length += $length;
+    }
+
+my $average_length = $total_length/$number_of_lines;
+
+print "Total number of lines =", $number_of_lines, "\n";
+print "Total length = ", $total_length, "\n";
+print "Average line length= ", $average_length, "\n"
+
+
+
+
+
+5. Create a script that uses <> to read in the contents of the provided
+    text file, Perl_III.nobody.txt. Use the function index() to
+ 
+      a. find the first position of 'Nobody' on every line
+      b. find the first position of 'somebody' on every line
+ 
+    Use the warn() function to warn the user that 'somebody is here'
+ 
+** You can look up how to use the index() and warn() functions in your books, google, or from the command line with the perldoc command, or on perldoc.org.
+
+
+
+#!/usr/bin/perl
+#File: somebody.pl
+#Author: 
+use strict;
+use warnings;
+
+
+while (my $line = <>) {
+    chomp($line);
+    
+    $line = uc $line;
+    my $nobody_index   = index($line,'NOBODY');
+    my $somebody_index = index($line,'SOMEBODY');
+    if ($nobody_index >= 0) {
+    warn("Nobody is here: $nobody_index.\n");
+    }
+    if ($somebody_index >= 0) {
+    warn("Somebody is here: $somebody_index.\n");
+    }
+}
+
+
+
+**** EXTRA CREDIT *** 
+6.  Create a file of numbers call numbers.txt with the following content:
+
+22
+45
+1
+2
+31
+32
+72
+24
+ 
+ 
+Create a script that processes the numbers.txt as followes:
+Here is the pseudo-code:
+ 
+create file myresult.txt and open it for writing output
+ 
+open numbers.txt for reading
+ 
+while (each line of the file numbers.txt) {
+ 
+  if (the number is even) {
+ 
+    if (the number is less than 24) {
+ 
+       print the line to STDOUT
+ 
+    }
+ 
+  }
+  else {
+ 
+    compute the factorial of the number
+ 
+    print the factorial to the file myresult.txt (one per line)
+ 
+  }
+ 
+}
+ 
+        a. What will be printed to STDOUT?
+        b. What will be the contents of myresult.txt?
+        c. Convert the pseudocode above into a real program.
+
+
+
+
+#!/usr/bin/perl                                                                                                   
+#Perl_III_factorial.pl                                                                            \
+                                                                                                   
+
+use strict;
+use warnings;
+
+#create file factorial infile and open for writing output                                             \
+                                                                                                   
+
+my $infile = 'numbers.txt';
+my $outfile = 'myresult.txt';
+               
+open (OUTFILE, ">", $outfile);                                                                    
+open (INFILE, "<", $infile);                                                                      
+         
+
+while (my $number = <INFILE>){
+  chomp $number;
+
+  if ($number % 2 ==0 || $number < 25){
+    print $number, "\n";
+  }
+  
+  else{
+    my $factorial = 1; #do not want a non-zero value                                              
+                                                                                                   
+    while ($number > 0){
+      $factorial = $factorial * $number;
+      $number--;
+    }
+  print OUTFILE $factorial, "\n";
+  }
+}
+close INFILE;                                                                                                    
+close OUTFILE;
