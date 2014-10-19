@@ -1,0 +1,119 @@
+##################
+HTML Problem Sets
+##################
+
+
+1.  Create a webpage that prints your name to the screen.
+
+<html>
+<body>
+<!-- print name to the screen -->
+John
+</body>
+</html>
+
+
+
+2. Create a webpage that prints the numbers 1 - 10 to the screen. 
+
+<html>
+<body>
+<!-- print the numbers 1 to 10 to the screen -->
+1 2 3 4 5 6 7 8 9 10
+</body>
+</html>
+
+
+
+3. Create a webpage that prints the message "When was this webpage created? Check page's title for the answer." to the screen, and set the title of the page to the current date.
+
+<html>
+<head>
+<!--set the title of the page to the current date-->
+<title>January 9th, 2009</title>
+</head>
+<body>
+<!--print a message-->
+When was this webpage created?
+Check page's title for the answer.
+</body>
+</html>
+
+4. Print your name to the screen with every letter being a different heading size.
+
+<html>
+<body>
+<h4>J</h4>
+<h3>o</h3>
+<h2>h</h2>
+<h1>n</h1>
+</body>
+</html>
+
+
+
+5. Print two lists with any information you want. One list should be an ordered list, the other list should be an unordered list. 
+
+<html>
+<body>
+<b>Hardware devices</b>
+
+<ol type="I">
+<li>CD-ROM drive</li>
+<li>DVD drive</li>
+<li>Hard disk</li>
+<li>Modem</li>
+</ol>
+
+<b>Web languages</b>
+
+<ul type="square">
+<li>HTML</li>
+<li>Javascript</li>
+<li>PHP</li>
+<li>Java</li>
+</ul>
+</body>
+</html>
+
+
+6. Print some preformatted text of your choosing. (hint: use the <pre> tag) 
+
+<html>
+<body>
+<b>A sample Java program:</b>
+
+<pre>
+class DataClass{
+
+      public static void main(String[] args){
+
+      	     System.out.println("Here is some text.");
+
+	     }
+
+}
+</pre>
+
+<p>
+Using the pre element you can display text however you want with all the spaces and line breaks preserved.
+</p>
+</body>
+</html>
+
+
+7. Create a table with people's favorite colors.
+<html>
+  <body>
+  <table>
+    <thead>
+      <tr><th>Person</th><th>Favorite Color</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Deb</td><td>Brown</td></tr>
+      <tr><td>Steven</td><td>Blue</td></tr>
+      <tr><td>Sofia</td><td>Corn Flower Blue</td></tr>
+    </tbody>
+  </table>
+  </body>
+</html>
