@@ -1,0 +1,272 @@
+Perl IV Problem Set
+==================
+1. Iterate through each element of this array using a foreach loop: (101,2,15,22,95,33,2,27,72,15,52);
+   - Print out only the values that are even (use modulus operator).
+
+
+
+#!/usr/bin/perl
+#PerlIV-1.pl
+                                                                                                                                                                                      
+use warnings;
+use strict;
+
+my @numbers = ("101", "2" , "15","22", "95", "33", "2", "27", "72", "15", "52");
+foreach my $number (@numbers){
+  if($number % 2 ==0){
+     print $number,"\n";
+                   }
+}
+
+
+
+
+2. Iterate through each of the elements of the above array, but sort them numerically.
+   - Print each element.
+   - Create two cumulative sums, one of all the even values and one of all the odd values. 
+   - Print the two sums.
+
+
+#!/usr/bin/perl
+# Perl IV Problem 2
+#################
+use warnings;
+use strict;
+
+my @ar = ("101","2","15","22","95","33","2","27","72","15","52");
+my $even_sum = 0;
+my $odd_sum = 0;
+
+ 
+foreach my $item (sort {$a <=> $b} @ar)
+{
+  print $item,"\n";  # print each element
+
+  if($item % 2 == 0)
+  {
+    $even_sum += $item; # $even_sum = $even_sum + $item
+  }
+  else
+  {
+    $odd_sum += $item; # $odd_sum = $odd_sum + $item
+  }
+}
+
+
+
+
+3. Iterate through each element in the this array (101,2,15,22,95,33,2,27,72,15,52) using a for loop.
+   - Print only the values of the indices that are odd  
+
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+my @array = (101, 2, 15, 22, 95, 33, 2, 27, 72, 15, 52);
+   for (my $i = 0; $i < scalar(@array); $i++)
+   {
+	my $member = $array[$i];
+	   if ($member % 2 !== 0){
+	   print $member, "\n";
+	   }
+}
+
+
+
+
+4. Using the sort() function with numbers
+   - Sort the array with the default sort function and store the new sorted array.
+   - print out the array. Are they sorted numerically?
+   - customize the sort function to sort the numbers numerically, and store the new sorted array.
+   - print out the array. Are they sorted numerically?
+   - reverse the numeric sort (hint, switch $a and $b), and store the new sorted array.
+   - print out the array. Are they sorted numerically, biggest to smallest?
+
+
+#!/usr/bin/perl                                                                                                                                                                                      
+
+use strict;
+use warnings;
+
+my @array = (101,2,15,22,95,33,2,27,72,15,52);
+my @sorted_array = sort (@array);
+print @sorted_array,"\n";
+@sorted_array = sort ( { $a <=> $b } @array);
+print @sorted_array, "\n";
+@sorted_array = sort ( { $b <=> $a } @array);
+print @sorted_array,"\n";
+
+
+
+
+5. Using pop, push, shift, unshift with this array (101,2,15,22,95,33,2,27,72,15,52)
+   - use pop on this array. Store the result of pop in a variable. Print the contents of this variable. Print the array. How is the array different from before the use of pop?
+   - use shift on the original array. Store the result of shift in a variable. Print the contents of this variable. Print the array. How is the array different from before the use of shift?
+   - use push on the original array with the number 12. Print the array. How is the array different from before the use of push?
+   - use unshift on the original array with the number 4. Print the array. How is the array different from before the use of unshift?
+
+
+
+#!/usr/bin/perl                                                                                                                                                                                   
+##pop##
+
+use strict;
+use warnings;
+
+my @array = (101, 2, 15, 22, 95, 33, 2, 27, 72, 15, 52);
+my $number = pop (@array);
+print $number,"\n";
+print join('--', @array),"\n";
+
+
+#!/usr/bin/perl                                                                                                                                                                                  
+##shift##
+
+use strict;
+use warnings;
+
+my @array = (101, 2, 15, 22, 95, 33, 2, 27, 72, 15, 52);
+my $first = shift(@array);
+print $first,"\n";
+print join('--', @array),"\n";
+
+
+
+#!/usr/bin/perl                                                                                                                                                                                  
+##push##
+
+use strict;
+use warnings;
+
+my @array = (101, 2, 15, 22, 95, 33, 2, 27, 72, 15, 52);
+push(@array, '12');
+print join('--', @array),"\n";
+
+
+
+!#/usr/bin/perl
+##unshift##
+
+use strict;
+use warnings;
+
+my @array = (101, 2, 15, 22, 95, 33, 2, 27, 72, 15, 52);
+unshift(@array, '4');
+print join('--', @array),"\n";
+
+
+
+
+6.  Run this code. Is its output what you expect? Why?
+                  for (my $i = 0; $i < 10; $i++) {
+                   if ($i = 2) {
+                       print "\$i = $i\n";
+                   }
+                  }
+
+#needs == rather than = (assignment operator)
+
+
+
+7. Using the sort function with strings: use this array: ('ATGCCCGGCCCGGC','GCGTGCTAGCAATACGATAAACCGG', 'ATATATATCGAT','ATGGGCCC') 
+
+8. Calculate GC content of one sequence
+   Turn a ONE of the above DNA strings into an array with split()
+   Use a foreach loop to look at each nucleotide in turn
+   Calculate total length of the sequence
+   Keep a running total of C's and G's
+   Print the calculated GC content as a percent.
+
+
+#!/usr/bin/perl                                                                                                  
+
+use strict;
+use warnings;
+
+  my @array = ('ATGCCCGGCCCGGC','GCGTGCTAGCAATACGATAAACCGG', 'ATATATATCGAT','ATGGGCCC');
+  my $sequence =  shift ( @array);
+  my @sequence = split (//, $sequence);
+  my $total_length = 0;
+  my $GC_count = 0;
+
+foreach my $nucl (@sequence){
+  if ( ($nucl eq "C") or ( $nucl eq "G") ){
+        $GC_count++;
+      }
+     $total_length++
+   }
+   print $total_length,"\n";
+   my $percent_GC = ($GC_count/$total_length)*100;
+   print $percent_GC,"\n";
+
+
+
+9. Place your GC content calculator code into an array, and calculate the GC content of each of the sequences in the above array. 
+ shift each element off array
+
+
+
+10. Create a shuffled sequence
+  Turn a DNA string into an array with split()
+  Use a for loop to perform the following procedure N times (N = length of seq)
+    Select a random position A with rand()
+    Select a random position B with rand()
+    Exchange the letters at array indices A and B
+    (remember you can reassign any value in an array: $array[4] = "new value";)
+  Print the now shuffled sequence
+
+
+  
+#!/usr/bin/perl                                                                                                                                                                                      
+use warnings;
+use strict;
+
+my $sequence = 'ATGCCCGGCCCGGC';
+my @nucleotides = split //, $sequence;
+
+my $length = length ($sequence);  #or = scalar(@nucleotides)                                                                                                                                         
+for (my $i = 0; $i < $length; $i++){
+    my $pos1 = int (rand ($length));
+    my $pos2 = int (rand ($length));
+    ($nucleotides[$pos1], $nucleotides[$pos2]) = ($nucleotides[$pos2], $nucleotides[$pos1]);
+}    
+print join ("", @nucleotides),"\n";
+
+
+
+ 
+11a. Start with 2 very similar DNA sequences. 
+  Align with ClustalW, TCoffee, or some other web alignment application. 
+  Output should be in FASTA format.
+  Store (copy and paste) the sequence, including dashes, from each ClustalW fasta output in a separate string variable inside your script.
+  Turn each string into an array with split()
+  Use a for loop to compare each index for nucleotide differences.
+  Report the nucleotide position of each difference.
+
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+my $al_seq1 = "ATGTCC---GT-GGCC"; # Aligned sequence 1
+my $al_seq2 = "--CTCCATCGTT-GCC"; # Aligned sequence 2
+my $size = length($al_seq1);
+
+my @seq1 = split(//,$al_seq1);
+my @seq2 = split(//,$al_seq2);
+
+print "$al_seq1\n";
+print "$al_seq2\n";
+for(my $c = 0; $c < $size; $c++)
+{
+  if ($seq1[$c] ne $seq2[$c])
+  {
+    print "Difference at $c\n";
+  }
+}
+
+ 
+11b. Do the same as above but instead of coping and pasting into string variables
+import from a file.
+ 

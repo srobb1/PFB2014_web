@@ -1,0 +1,68 @@
+
+
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+use CGI::Carp::DebugScreen;
+use CGI ':standard';
+
+print header;
+Print start_html('Your Age in Dog Years'),
+  h1('Your Age in Dog Years'),
+  start_form,
+  "What's your name?",textfield(-name=>'first_name'),
+  p,
+  "What's your age?",textfield(-age=>'age'),
+  p,
+  end_form,
+  hr;
+  
+  if(param){
+    my $age = param('age');
+    my $dog_age = ($age/7);
+    
+    print 
+      "Your name is: ",param('first_name'),
+        p,
+      "Your age is: ",param('age');
+      p,
+      "Your age in dog years is:",param($dog_age);
+  }
+
+print end_html;
+
+
+
+#!/usr/bin/perl                                                                                                                                                                                      
+
+use strict;
+use warnings;
+
+use CGI ':standard';
+use CGI::Carp::DebugScreen;
+
+print header;
+
+print start_html('Break DNA into Codons'),
+h1('Break DNA into codons'),
+start_form,
+"Enter your DNA sequence here:",br,
+textarea(-name=>'sequence',-rows=>5,-cols=>60),
+submit('Codons per DNA sequence'),
+end_form,
+hr;
+
+if(param){
+    my $sequence = param('sequence');
+    my @codon =~ m/(.{3})/g;
+    foreach my $codon (@codon){
+        print h2('Codons per DNA sequence');
+        print param($codon);
+    }
+}
+
+
+
+print end_html;

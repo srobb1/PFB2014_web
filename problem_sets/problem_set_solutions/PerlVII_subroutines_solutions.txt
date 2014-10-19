@@ -1,0 +1,119 @@
+Perl VII Problem Set
+=====================
+1. Create a subroutine that reverse complements a sequence.
+This subroutine should take a nucleotide sequence as a parameter and return the reverse complement.
+ 
+Here's the pseudo code:
+ 
+-- BEGIN PSEUDOCODE --
+ 
+subroutine reverse_complement {
+ 
+  get the parameter nucleotide string
+ 
+  reverse complement the nucleotide string
+ 
+  return the complemented nucleotide string
+ 
+}
+ 
+-- END PSEUDOCODE --
+ 
+Write a program that takes in a nucleotide string as an argument, calls the reverse_complement subroutine, and then prints the reverse complement sequence to STDOUT.
+ 
+-- BEGIN SAMPLE RUN --
+ 
+./reverse_complement.pl GAGAGAGAGAGTTTTTTTTT
+AAAAAAAAACTCTCTCTCTC
+ 
+-- END SAMPLE RUN --
+
+
+
+
+#!/usr/bin/perl
+# Perl_VII-Problem1
+
+use warnings;
+use strict;
+
+my $seq = shift @ARGV;
+print reverse_complement($seq),"\n";
+
+## Subroutines
+sub reverse_complement{
+  # Get the parameter nucleotide string
+  my $str = shift;
+
+  # Reverse complement the string
+  $str =~ tr/ATGC/TACG/;
+  $str = reverse($str);
+
+  # Return reverse complemented string
+  return $str;
+}
+
+
+
+2. Create a subroutine that reformats your FASTA file such that the sequence is reformatted so that it contains certain number of nucleotides per line. 
+ 
+For example:
+ 
+reformat_seq ($seq , 60 );
+ 
+## sequence before
+>seq 1
+GAATTCAAGTTCTTGTGCGCACACAAATCCAATAAAAACTATTGTGCACACAGACGCGACTTCGCGGTCTCGCTTGTTCTTGTTGTATTCGTATTTTCATTTCTCGTTCTGTTTCTACTT
+AACAATGTGGTGATAATATAAAAAATAAAGCAATTCAAAAGTGTATGACTTAATTAATGAGCGATTTTTTTTTTGAAATCAAATTTTTGGAACATTTTTTTTAAATTCAAATTTTGGCGA
+AAATTCAATATCGGTTCTACTATCCATAATATAATTCATCAGGAATACATCTTCAAAGGCAAACGGTGACAACAAAATTCAGGCAATTCAGGCAAATACCGAATGACCAGCTTGGTTATC
+ 
+## sequence after
+>seq 1
+GAATTCAAGTTCTTGTGCGCACACAAATCCAATAAAAACTATTGTGCACACAGACGCGAC
+TTCGCGGTCTCGCTTGTTCTTGTTGTATTCGTATTTTCATTTCTCGTTCTGTTTCTACTT
+AACAATGTGGTGATAATATAAAAAATAAAGCAATTCAAAAGTGTATGACTTAATTAATGA
+GCGATTTTTTTTTTGAAATCAAATTTTTGGAACATTTTTTTTAAATTCAAATTTTGGCGA
+AAATTCAATATCGGTTCTACTATCCATAATATAATTCATCAGGAATACATCTTCAAAGGC
+AAACGGTGACAACAAAATTCAGGCAATTCAGGCAAATACCGAATGACCAGCTTGGTTATC
+
+
+
+#!/usr/bin/perl
+#Perl_VII-Problem2
+
+use warnings;
+use strict;
+
+my $seq = "atcgtgcagtcatgatgtagdtagstdagtaggcgatcgtatgctagctaggtagctagctagct";
+my @formatted = reformat_seq($seq,11);
+
+print join("\n",@formatted),"\n";
+
+## Subroutines
+## reformat_seq(str $seq, int $size)
+#    Accepts as input two scalars: the string and the size to reformat
+#    Returns an array with properly sized fragments
+sub reformat_seq{
+  my $seq = shift @_;
+  my $size = shift @_;
+  my @rf_seq;
+  for(my $i=0;$i<length($seq);$i+=$size)
+  {
+    push (@rf_seq, substr($seq,$i,$size));
+  }
+  return @rf_seq
+}
+
+
+my $seq = shift;
+my $$number = shift;
+
+my @array;
+
+for (my i = 0; i< length($seq); i+=$size) {
+
+    push (@array, substr($seq, i, $size));
+
+}
+
+return @array;
