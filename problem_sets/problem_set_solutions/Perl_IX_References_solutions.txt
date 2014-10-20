@@ -1,0 +1,737 @@
+#################################
+Perl IX: References Problem Set
+#################################
+ 
+1. Create an array, retrieve the reference(address), print the reference(address).
+    my @array = ('a' , 123, 'book' , 'end');
+
+my @array = ('a', 123, 'book', 'end');
+
+
+
+
+2. Use the reference to print out the 2nd and 3rd elements.
+#Index (i) for element (E) is:
+#i= E-1:
+
+print "Element 2: ", ${$array_ref}[1],"\n";
+print "Element 3: ", ${$array_ref}[2], "\n";
+
+
+
+
+3. Create a hash, retrieve the reference (address), print the reference.
+
+my $hash = (
+'a' => 123,
+'book' => 'end'
+);
+
+my $hash_ref = \%hash;
+
+print $hash_ref, "\n"; 
+
+
+
+
+4. Use the reference to print out a single key/value pair.
+
+print join (' ', 'book', ${$hash_ref}{'book'}), "\n";
+
+
+
+
+
+5. Create a hash of hashes ( The value of book is really an anonymous hash)
+
+Use the "one at a time method" (see notes for more info), 
+     $favs{'book'}{'Year'}=1994, 
+      
+
+This hash will be called %favs.
+
+
+$VAR1 = {
+          'book' => { 
+                        'Name'   => "Midnight in the Garden of Good and Evil",
+                        'Author' => "John Berendt",
+                        'Type'   => "non-fiction",
+                        'Year'   => 1994
+          
+           },
+ 
+           'song' => { 
+                        'Name'   => "She Blinded Me with Science",
+                        'Artist' => "Thomas Dolby",
+                        'Album'  => "Blinded by Science",
+                        'Year'   => 1982
+           }, 
+
+}
+
+
+
+my %hash = %faves
+
+$favs{'book'}{'Name'} = "Midnight in the Garden of Good and Evil";
+$favs{'book'}{'Author'} = "John Berendt";
+$favs{'book}{'Type'} = "non-fiction";
+$favs{'book'}{'Year'} = 1994;
+$favs{'song'}{'Name'} = "She Blinded Me with Science";
+$favs{'song'}{'Artist} = "Thomas Dolby';
+$favs{'song'}{'Album'} = "Blinded by Science";
+$favs{'song'{'Year'} = 1982;
+
+
+
+
+6. Use Data::Dumper and its function Dumper to print out the hash to the screen (STDOUT).
+
+print Dumper \%favs;
+
+
+
+7. Retrieve the value of your favorite song's name.
+
+print $favs{song}{Artist},"\n";
+
+
+
+
+8. Retrieve the value of your favorite book's type.
+
+foreach my $all (keys  % { $favs{book} } ) {                                      
+   my $val = % { $favs{book} } {$all} ;                                            
+   print "$val\n";                                                                 
+}
+
+
+
+
+9. Print out the entire hash using a foreach loop. 
+
+foreach my $key (sort keys %favs ){
+  foreach my $level (keys % { $favs{$key} }){
+  my $value = $favs{$key}{$level};
+ print $value,"\n";
+ print $favs{$key}{level}
+  }
+}
+
+
+
+
+10. Reset your favorite book to something new. Make sure to change all the related information.
+
+$favs{'book'}{'Name'} = "Girl with the Dragon Tattoo";
+$favs{'book'}{'Author'} = "Stieg Larsson";
+$favs{'book'}{'Type'} = "non-fiction";
+$favs{'book'}{'Year'} = "2008";
+
+
+
+
+11. Print out the entire hash using a foreach loop to visualize your changed book information. 
+
+foreach my $key (sort keys %favs ){
+  foreach my $level (keys % { $favs{$key} }){
+  my $value = $favs{$key}{$level};
+ print $value,"\n";
+ print $favs{$key}{level}
+  }
+}
+
+
+
+
+SEQUENCE INFO REFERENCES PROBLEM SET CONTINUED
+
+ 
+1. Modify your FASTA parser to create a hash of genes and store
+    a. The sequenceID as a hash key (geneName)
+    b. The sequence description as a inner key to geneName.
+    c. The sequence as a inner key to the same key (geneName).
+    d. The sequence length as a inner key to the same key (geneName).
+    Hint: This is now a hash of hashes. The value of gene is really an anonymous hash.
+ 
+$VAR1 = {
+          'gene1' => { 
+                        'seq' => "ATTC",
+                        'desc' => 'the is a great seq',
+                        'len' => 4,
+           },
+ 
+           'gene2' => { 
+                        'seq' => "TTTT",
+                        'desc' => 'the is a better seq',
+                        'len' => 4,
+ 
+            },
+    };
+
+ 
+
+
+
+
+#!/usr/bin/perl
+use strict;
+use warnings;
+use Data::Dumper;
+
+
+while(my $line = <IN>)
+{
+  chomp $line;
+  if($line =~ m/^>(.+?)\s+(.*)/) # Use subpatterns to grab the name and desc in one line
+  {
+    $geneName = $1; 
+    ## Providing two keys, as in the next line of code, sets up a
+    #   hash of hashes: the value of %genes using the key $geneName 
+    #   is a reference to a hash, which will ultimately have the
+    #   keys "Desc", "Seq", and "Len".
+    $genes{$geneName}{"Desc"} = $2;
+  }
+  else
+  {
+    $genes{$geneName}{"Seq"} .= $line;
+    $genes{$geneName}{"Len"} = length ($genes{$geneName}{"Seq"});
+  }
+}
+close(IN);
+
+
+
+ 
+
+
+2. Use Data::Dumper and its function Dumper to print out the hash to the screen (STDOUT).
+   Remember to use the reference to the hash!!
+
+print Dumper \%genes;
+
+
+ 
+
+
+3. Print out each gene and its information in a tab-delimited file (FILEHANDLE).
+   a. Using a foreach loop, iterate through each key (sequenceID).
+   b. Use key to iterate thru each inner key (seq desc, seq, length) and retrieve the values.
+   c. print out all data delimited by tabs (\t).
+      ex: seq1\tmy favorite gene\tATGCTGGGG\t9\n" 
+      d. What about the header line ("Name\tDesc\tSeq\tlen\n")? Where do you need to print this so that it appears first and only once in your output.
+ 
+my $outfile = "out";
+open (OUT,'>',$outfile);
+print OUT "Name\tDesc\tSeq\tLength\n";
+foreach my $key (sort keys %genes)
+{
+  my @sub_keys = keys %{$genes{$key}};
+  print OUT "$key\t$genes{$key}{'Desc'}\t$genes{$key}{'Seq'}\t$genes{$key}{'Len'}\n";
+}
+close(OUT);
+
+
+
+
+ 
+4. Calculate and store the count of each nucleotide for each seq.
+   **** hint: $genes{$seqName}{'nt_count'}{$nt}=$count;
+   **** hint: %gene is now a hash of hashes of hashes.
+   a. Nucleotide count {'nt_count'} will be another value of the gene key. It is not a variable, it is a string. $genes{$seqName}{'nt_count'}
+ 
+$VAR1 = {
+          'gene1' => { 
+                        'seq' => "ATTC",
+                        'len' => 4,
+                        'desc' => 'the is a great seq',
+                        'nt_count' => { 
+                            'a' => '1',
+                            't' => '2'
+                            'C' => '1'
+                          },
+           },
+ 
+           'gene2' => { 
+                        'seq' => "TTTT",
+                        'len' => 4,
+                        'desc' => 'the is a better seq',
+                        'nt_count' => { 
+                            't' => '4',
+                          },
+ 
+ 
+            },
+    };
+
+
+
+
+foreach my $geneName (keys %geneInfo){		                # foreach loop to go through each key ($geneName) of %geneInfo hash
+	my @seq = split ('', $geneInfo{$geneName}{'geneSeq'});	# make array with entries being nts from $geneSeq
+	foreach my $nt(@seq) {                                  # foreach loop to iterate through each nt
+	if ($nt eq 'A'){                                        # if nt is A, then add 1 to 'ntCount' key of hash
+	   $geneInfo{$geneName}{'ntCount'}{$nt}++;
+	   }	
+	if ($nt eq 'T'){
+	   $geneInfo{$geneName}{'ntCount'}{$nt}++;
+	   }
+	if ($nt eq 'C'){
+	   $geneInfo{$geneName}{'ntCount'}{$nt}++;
+	   }
+	 if ($nt eq 'G'){
+	    $geneInfo{$geneName}{'ntCount'}{$nt}++;
+	    }
+	}
+
+}
+ 
+ 
+print OUT "geneName\t";
+print OUT "geneID\t";
+print OUT "geneDesc\t";
+print OUT "geneSeq\t";
+print OUT "geneLen\t";
+
+foreach $geneName (keys %geneInfo){
+	print OUT ($geneName, "\t", $geneInfo{$geneName}{'geneID'}, "\t",$geneInfo{$geneName}{'geneDesc'}, "\t",$geneInfo{$geneName}{'geneSeq'}, "\t",$geneInfo{$geneName}{'geneLen'}, "\n");
+} 
+
+
+
+
+
+
+5. Calculate and add %GC content for each sequence to the hash for each gene as an additional value to the gene name key.
+   a. Create a GC_content subroutine. 
+   b. Call the subroutine on each sequence 
+      my $GC = GC_content($seq);
+      c. Use your already stored seq length and 'G' and 'C' total counts to calculate GC content
+      d. Store the calculated %GC content as an additional value to gene key.
+      e. use Data::Dumper to visualize your hash.
+
+
+
+#!/usr/bin/perl
+#PerlIX-Q5
+#Author: Jessen Bredeson
+
+use strict;
+use warnings;
+
+use Data::Dumper;
+    
+# STRATEGY: create a global variable to temporarily cache the sequence
+#   name (key) that gets updated everytime we see a sequenence header
+#   line, which is always before we see its sequence.
+
+
+my $infile  = shift;
+my $outfile = shift;
+if (! defined($infile) or ! defined($outfile)) {
+    die "Usage: fastaParser.pl <in.fasta> <out.txt>\n";
+} else {
+    open(IN, '<', $infile) or die "Cannot open $infile for reading: $!\n";
+    open(OUT,'>',$outfile) or die "Cannot open $outfile for writing: $!\n";
+
+    my $seqid; 
+    my %sequence;
+    while (my $line = <IN>) {
+    chomp $line;
+
+    # The following regular expression is the most flexible way of grabbing
+        # the necessary info: the gene id is required, but if there is no 
+        # description, $2 is assigned an empty string, initializing the value of
+        # $sequence{$seqid}{'desc'}
+	if ($line =~ /^>(\S+)(.*)/) {
+	    $seqid = $1;
+	    $sequence{$seqid}{'len'}  = 0;
+	    $sequence{$seqid}{'desc'} = $2;
+	    $sequence{$seqid}{'desc'} =~ s/^\s+//; # clip off leading whitespace
+	} else {
+	    $sequence{$seqid}{'seq'} .= $line;
+	    $sequence{$seqid}{'len'} += length($line);	    
+	}
+    }
+
+    print OUT join("\t",qw(Name Desc Seq Len)),"\n";
+    foreach my $geneName (sort keys %sequence) {
+    my $sequence = $sequence{$geneName}{'seq'};  
+        # 5b:
+	$sequence{$geneName}{'GC_content'} = GC_content($sequence); 
+
+        # 5c:
+	# we can accelerate the speed of the code by creating two refs (pointers)
+	# to the same hashref. The speed comes from avoiding de-ref'ing the whole
+	# %sequence data structure down to the nt-count hash for every nt, but 
+	# access it directly through the direct reference:
+	# %sequence: +-------+-------+   +----------+-------+   +-------+-------+
+	# 	              | gene1 |   O======>| nt_count |   O======>|   A   |  ###  |
+	#            +-------+-------+   +----------+-------+   +-------+-------+
+	#                                                           ^
+	# $nt_count: +-------+                                      |
+	#            |   O==========================================+
+	#            +-------+
+	#
+	# if the nt-count hash isn't defined, create it:
+	my $nt_count = ($sequence{$geneName}{'nt_count'} ||= {});
+	for (my $i = 0; $i < $sequence{$geneName}{'len'}; $i++) {
+	    ${$nt_count}{uc substr($sequence,$i,1)}++;
+	    }
+	    $sequence{$geneName}{'GC'}
+	        = ((${$nt_count}{'G'} || 0) + (${$nt_count}{'C'} || 0))
+		  / $sequence{$geneName}{'len'};
+		  # We say "(${nt_count}{$nt} || 0)" above because in some short sequences or
+		  # content-biased sequences, we may not observe some nucleotides, in which case
+		  # Perl will throw "uninitialized value in addition" errors, so we provide a 
+		  # fallback value of 0
+		  
+		  print OUT join("\t",
+		  	       $geneName,
+			       $sequence{$geneName}{'desc'},
+			       $sequence{$geneName}{'seq'},
+			       $sequence{$geneName}{'len'}
+			),"\n";
+    		}
+
+    close(OUT);
+    close(IN);
+
+    print STDERR Dumper(\%sequence);
+}
+
+
+sub GC_content {
+    my $seq = shift;
+    
+    my $GC = 0;
+    for (my $i = 0; $i < length($seq); $i++) {
+    my $nt = uc substr($seq,$i,1);
+    if ($nt eq 'C' or $nt eq 'G') {
+        $GC++;
+	}
+    }
+    # We say "(length($seq) || 1)" below because in the case where there are
+    # headers for an empty sequence (not technically correct by fasta format, but
+    # it happens) Perl will throw "Illegal division by zero" errors, so we provide a 
+    # fallback value of 1 and the sub will still return the correct value
+    return $GC / (length($seq) || 1);
+}
+
+# RESULT:
+# ------------------------------------------------------------
+#
+# $VAR1 = {
+#     'gene1' => {
+#                        'len' => 4,
+#                        'GC_content' => '0.25',
+#                        'nt_count' => {
+#                                        'A' => 1,
+#                                        'T' => 2,
+#                                        'C' => 1
+# 					            },
+#                        'desc' => 'this is a great seq',
+#                        'seq' => 'ATTC'
+#     },
+#	       'gene2' => {
+#                        'len' => 4,
+#                        'GC_content' => '0',
+#                        'nt_count' => {
+#                                        'T' => 4
+# 					            },
+#                        'desc' => 'this is a better seq',
+#                        'seq' => 'TTTT'
+# 			          }
+# };
+
+ 
+
+
+
+
+
+6. Print out only high %GC content sequences to a file called highGC.fasta in FASTA format.
+   a. Create a subroutine called GC_filter.
+   b. GC_filter takes the hash of genes and a minimum %GC cutoff. 
+   c. GC_filter returns the number of sequences that met your %GC cutoff criteria or have a higher GC%.
+   d. GC_filter also returns an array of arrays made up of gene names and sequences ([geneName,seq],[geneName,seq],[geneName,seq]).
+   e. Example usage:  
+      my ($count, $array_of_arrays) = GC_filter (\%genes , 55);
+ 
+$VAR1 = {
+          'gene10' => { 
+                        'seq' => "GCAT",
+                        'len' => 4,
+                        'desc' => 'the is a super seq',
+                        'nt_count' => { 
+                            'a' => '1',
+                            't' => '1'
+                            'C' => '1'
+                            'G' => '1'
+                          },
+                         'GC'   => '50',
+           },
+}
+
+
+
+
+#!/usr/bin/perl
+#PerlIX-Q6
+#Author: Jessen Bredeson
+
+use strict;
+use warnings;
+
+use Data::Dumper;
+    
+# STRATEGY: create a global variable to temporarily cache the sequence
+#   name (key) that gets updated everytime we see a sequenence header
+#   line, which is always before we see its sequence.
+
+
+my $infile  = shift;
+my $outfile = shift;
+if (! defined($infile) or ! defined($outfile)) {
+    die "Usage: fastaParser.pl <in.fasta> <out.txt>\n";
+} else {
+    open(IN, '<', $infile) or die "Cannot open $infile for reading: $!\n";
+    open(OUT,'>',$outfile) or die "Cannot open $outfile for writing: $!\n";
+
+    my $seqid; 
+    my %sequence;
+    while (my $line = <IN>) {
+    chomp $line;
+    
+    if ($line =~ /^>(\S+)(.*)/) {
+        $seqid = $1;
+	$sequence{$seqid}{'len'}  = 0;
+        $sequence{$seqid}{'desc'} = $2;
+	$sequence{$seqid}{'desc'} =~ s/^\s+//; # clip off leading whitespace
+	} else {
+	   $sequence{$seqid}{'seq'} .= $line;
+	   $sequence{$seqid}{'len'} += length($line);	    
+	}
+    }
+    foreach my $geneName (sort keys %sequence) {
+        # 5c:
+	    # we can accelerate the speed of the code by creating two refs (pointers)
+	    # to the same hashref. The speed comes from avoiding de-ref'ing the whole
+	    # %sequence data structure down to the nt-count hash for every nt, but 
+            # access it directly through the direct reference:
+	    # %sequence: +-------+-------+   +----------+-------+   +-------+-------+
+	    # 	          | gene1 |   O======>| nt_count |   O======>|   A   |  ###  |
+            #            +-------+-------+   +----------+-------+   +-------+-------+
+	    #                                                           ^
+            # $nt_count: +-------+                                      |
+	    #            |   O==========================================+
+            #            +-------+
+            #
+	    my $sequence = $sequence{$geneName}{'seq'};  
+            # if the nt-count hash doesn't exit, create it
+	    my $nt_count = ($sequence{$geneName}{'nt_count'} ||= {});
+	    for (my $i = 0; $i < $sequence{$geneName}{'len'}; $i++) {
+		 ${$nt_count}{uc substr($sequence,$i,1)}++;
+		 }
+			        $sequence{$geneName}{'GC'} = ((${$nt_count}{'G'} || 0) + (${$nt_count}{'C'} || 0));
+				    # We say "(${nt_count}{$nt} || 0)" above because in some short sequences or
+				        # content-biased sequences, we may not observe some nucleotides, in which case
+					    # Perl will throw "uninitialized value in addition" errors, so we provide a 
+					        # fallback value of 0
+    }
+
+# Question 6:
+    my ($count,$passingSeqs) = GC_filter(\%sequence,55);
+
+    foreach my $pair (@{$passingSeqs}) {
+    print OUT formatFASTA(@{$pair});
+    }
+
+    close(OUT);
+    close(IN);
+}
+
+sub formatFASTA {
+    my $id  = shift;
+    my $seq = shift;
+
+    return join("\n",">$id",$seq =~ /(.{1,60})/g,'');
+}
+
+sub GC_filter {
+    my $genes = shift;
+    my $thrsh = shift;
+    
+    my @GClist;
+    foreach my $id (keys(%{$genes})) {
+    my $GC = 100 * (${$genes}{$id}{'GC'} / ${$genes}{$id}{'len'});
+    if ($GC >= $thrsh) {
+        push @GClist, [$id, ${$genes}{$id}{'seq'}];
+	}
+    }
+    return( scalar(@GClist), \@GClist );
+}
+    
+
+sub GC_content {
+    my $seq = shift;
+    
+    my $GC = 0;
+    for (my $i = 0; $i < length($seq); $i++) {
+    my $nt = uc substr($seq,$i,1);
+    if ($nt eq 'C' or $nt eq 'G') {
+        $GC++;
+	}
+    }
+    # We say "(length($seq) || 1)" below because in the case where there are
+    # headers for an empty sequence (not technically correct by fasta format, but
+    # it happens) Perl will throw "Illegal division by zero" errors, so we provide a 
+    # fallback value of 1 and the sub will still return the correct value
+    return $GC / (length($seq) || 1);
+}
+
+# RESULT:
+# ------------------------------------------------------------
+#
+# $VAR1 = {
+#     'gene1' => {
+#                        'len' => 4,
+#                        'GC_content' => '0.25',
+#                        'nt_count' => {
+#                                        'A' => 1,
+#                                        'T' => 2,
+#                                        'C' => 1
+# 					            },
+#                        'desc' => 'this is a great seq',
+#                        'seq' => 'ATTC'
+#     },
+#	       'gene2' => {
+#                        'len' => 4,
+#                        'GC_content' => '0',
+#                        'nt_count' => {
+#                                        'T' => 4
+# 					            },
+#                        'desc' => 'this is a better seq',
+#                        'seq' => 'TTTT'
+# 			          }
+# };
+
+
+
+
+ 
+ 
+7. Print out each gene and ALL of its information in a new tab-delimited file (FILEHANDLE).
+   a. Using foreach loops, iterate through each level of the hash of hashes of hashes.
+   b. print output to a new file called all.txt in with this format:
+   "seq1\tDesc\tGC%\tA:count,T:count,C:count,T:count\tsequence\n"
+
+
+
+#!/usr/bin/perl
+#PerlIX-Q7
+#Author: Jessen Bredeson
+
+use strict;
+use warnings;
+
+    
+# STRATEGY: create a global variable to temporarily cache the sequence
+#   name (key) that gets updated everytime we see a sequenence header
+#   line, which is always before we see its sequence.
+
+
+my $infile  = shift;
+my $outfile = shift;
+if (! defined($infile) or ! defined($outfile)) {
+    die "Usage: fastaParser.pl <in.fasta> <out.txt>\n";
+} else {
+    open(IN, '<', $infile) or die "Cannot open $infile for reading: $!\n";
+    open(OUT,'>',$outfile) or die "Cannot open $outfile for writing: $!\n";
+
+    my $seqid; 
+    my %sequence;
+    while (my $line = <IN>) {
+    chomp $line;
+    
+    if ($line =~ /^>(\S+)(.*)/) {
+        $seqid = $1;
+	$sequence{$seqid}{'len'}  = 0;
+	$sequence{$seqid}{'desc'} = $2;
+	$sequence{$seqid}{'desc'} =~ s/^\s+//; # clip off leading whitespace
+	} else {
+	   $sequence{$seqid}{'seq'} .= $line;
+	   $sequence{$seqid}{'len'} += length($line);	    
+	}
+    }
+    print OUT join("\t",qw(Name Desc Len A T C G Seq)),"\n";
+    foreach my $geneName (sort keys %sequence) {
+        # 5c:
+	# we can accelerate the speed of the code by creating two refs (pointers)
+	# to the same hashref. The speed comes from avoiding de-ref'ing the whole
+	# %sequence data structure down to the nt-count hash for every nt, but 
+	# access it directly through the direct reference:
+	# %sequence: +-------+-------+   +----------+-------+   +-------+-------+
+	# 	          | gene1 |   O======>| nt_count |   O======>|   A   |  ###  |
+        #            +-------+-------+   +----------+-------+   +-------+-------+
+	#                                                           ^
+	# $nt_count: +-------+                                      |
+	#            |   O==========================================+
+        #            +-------+
+        #
+	my $sequence = $sequence{$geneName}{'seq'};  
+        # if the nt-count hash doesn't exit, create it
+	my $nt_count = ($sequence{$geneName}{'nt_count'} ||= {});
+	   for (my $i = 0; $i < $sequence{$geneName}{'len'}; $i++) {
+		${$nt_count}{uc substr($sequence,$i,1)}++;
+	}
+		$sequence{$geneName}{'GC'} = ((${$nt_count}{'G'} || 0) + (${$nt_count}{'C'} || 0));
+		# We say "(${nt_count}{$nt} || 0)" above because in some short sequences or
+		# content-biased sequences, we may not observe some nucleotides, in which case
+		# Perl will throw "uninitialized value in addition" errors, so we provide a 
+		# fallback value of 0
+		print OUT join("\t",
+			$geneName,
+			$sequence{$geneName}{'desc'},
+			$sequence{$geneName}{'len'},
+			(map { $sequence{$geneName}{'nt_count'}{$_}||0 } qw(A T C G)),
+			$sequence{$geneName}{'seq'},
+		),"\n";
+
+    }
+    
+    close(OUT);
+    close(IN);
+}
+
+sub GC_filter {
+    my $genes = shift;
+    my $thrsh = shift;
+    
+    my @GClist;
+    foreach my $id (keys(%{$genes})) {
+    my $GC = 100 * (${$genes}{$id}{'GC'} / ${$genes}{$id}{'len'});
+    if ($GC >= $thrsh) {
+        push @GClist, [$id, ${$genes}{$id}{'seq'}];
+	}
+    }
+    return( scalar(@GClist), \@GClist );
+}
+    
+
+sub GC_content {
+    my $seq = shift;
+    
+    my $GC = 0;
+    for (my $i = 0; $i < length($seq); $i++) {
+    my $nt = uc substr($seq,$i,1);
+    if ($nt eq 'C' or $nt eq 'G') {
+        $GC++;
+	}
+    }
+    # We say "(length($seq) || 1)" below because in the case where there are
+    # headers for an empty sequence (not technically correct by fasta format, but
+    # it happens) Perl will throw "Illegal division by zero" errors, so we provide a 
+    # fallback value of 1 and the sub will still return the correct value
+    return $GC / (length($seq) || 1);
+}
