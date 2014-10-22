@@ -1,0 +1,157 @@
+##############################
+Perl XI - BioPerl Problem Set
+#############################
+
+Preparation:
+
+1.  Download uniprot_sprot:
+
+  wget ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot_sprot.fasta.gz
+
+
+2. Unzip the file.
+
+  gunzip uniprot_sprot.fasta.gz
+
+
+
+PROBLEM 1: Bio::DB::Fasta
+
+1. write a script to retrieve all IDs from uniprot_sprot.fasta using the get_all_ids method from Bio::DB:Fasta.
+2. Search through the list of IDs for all IDs that contain the term "HDAC"  
+3. Print the sequences for these proteins, in FASTA format.
+
+
+
+#!/usr/bin/perl                                                                                                                                                                                    
+#PerlXI_Bioperl_Prob_1.pl
+
+use strict;
+use warnings;
+use Bio::DB::Fasta;
+
+
+my $BioDB_file = shift;
+my $BioDB_obj = Bio::DB::Fasta->new ($BioDB_file);
+
+my @FASTA_ids = $BioDB_obj->get_all_ids;  #Getting all ids into array                                                                                                        
+#print $FASTA_ids[1],"\n"; #to see each id individually                                                                            
+#print @FASTA_ids; #all entries in one file                                                                                                                                                   
+
+
+foreach my $FASTA_ids (@FASTA_ids) {
+     if ($FASTA_ids =~ /HDAC/){
+         #print $FASTA_ids,"\n";						#Checking to see if retrieved HDAC ids                                                              
+	 my $ID_Seq_obj = $BioDB_obj->get_Seq_by_id($FASTA_ids); 		#need to refer to original object                                                                                  
+	 my $Sequence_string = $ID_Seq_obj -> seq; 				    #pull out sequence                                                                                        
+	 my $Description_string = $ID_Seq_obj -> desc; 				#pull out description                                                                                       
+         print ">$FASTA_ids $Description_string\n$Sequence_string\n";
+         
+     }
+}
+
+
+
+
+
+PROBLEM 2: Bio::SeqIO
+
+1. Write a script using Bio::SeqIO to retrieve the CDS translation from a genbank file. 
+
+
+#usr/bin/perl
+#PerlXI_Bioperl_Prob_2.pl
+
+use strict;
+use warnings;
+
+use Bio::SeqIO;
+
+my $Genbank_file = shift;
+
+my $GenBank_obj = Bio::SeqIO->new(-file => $Genbank_file,
+                                    -format => "genbank");
+
+my $Seqobj = $GenBank_obj->next_seq;
+
+foreach my $feature ($Seqobj->get_SeqFeatures){
+      print $feature->primary_tag,"\n";
+      #my $tag = $GenBank_seq->get_all_tags;                                                                                                                                                       
+      if ($feature->primary_tag eq "CDS"){
+      my ($translation) = $feature->get_tag_values("translation");   #printing seqs. for CDS with all other tags                                                                                  
+         print $translation,"\n";
+       }
+    }
+
+
+
+PROBLEM 3: Bio::SearchIO
+
+1. On the command line, run the following command to format the file for using as a blast database:
+  makeblastdb -in uniprot_sprot.fasta  -dbtype prot
+  	      	  		       	       
+2. Here is how you can blast your favorite seq against swissprot:
+
+  blastp -query query.fasta -db uniprot_sprot.fasta -evalue 1e-10 -out query_v_sprot.blastout
+            
+   **You can find additional information on	BLAST+ at: http://www.ncbi.nlm.nih.gov/books/NBK1763/
+
+
+3. Run Blast with 3 of the protein sequences from Problem 1.
+  * use the uniprot_sprot.fasta as your database
+  * run blast with an e-value cut-off of 1e-10
+
+
+4. Parse your Blast output. For Hits with "significance" less than or equal to 1e-50 retrieve every HSP and print in a tab delimited format:
+  * QUERY Name
+  * HIT Name
+  * HSP Evalue
+
+
+
+#! /usr/bin/perl
+#PerlXI_Bioperl_Prob3.pl
+
+use strict;
+use warnings;
+
+use Bio::SearchIO; # use the bioperl object
+
+
+#my ($infile, $outfile) = @ARGV;
+#my ($informat, $outformat) = ('fasta', 'fasta');
+# Bioperl-style access
+
+my $infile = shift;
+  
+my $obj = Bio::SearchIO->new(
+   	  -file => $infile,
+	  -format => 'blast'
+   	      );	      
+                
+                
+my $cutoff = 1e-50;
+
+while (my $result = $obj->next_result){       
+    my $id = $result->query_name();
+    #print "$id\n";
+
+    while ( my $hit = $result->next_hit) {    
+    	    my $hit_name = $hit->name();    	    
+	    my $significance = $hit->significance();
+	    #print "Significance: $significance\n";
+	    if ($significance < $cutoff){			
+    		while ( my $hsp = $hit->next_hsp){ 
+    		my $evalue = $hsp->evalue();
+		print "QUERY Name: ", "$id\n";
+		print "HIT Name: ", "$hit_name\n";
+		print "HSP Evalue: ", "$evalue\n";
+		      }    
+		}
+	}
+
+}
+
+
+
+

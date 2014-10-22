@@ -1,0 +1,120 @@
+Perl X Problem Set
+====================
+1. Take a look at the Statistics::Descriptive module on cpan.
+
+2. Write a script that uses the methods in Statistics::Descriptive to calculate the standard deviation, median, min, and max of the following numbers:
+ 
+                 12,-13,-12,7,11,-4,-12,9,6,7,-9
+
+
+#!/usr/bin/perl
+#PerlX-Q2
+#############
+
+
+use strict;
+use warnings;
+
+use Statistics::Descriptive;
+
+my $stats = Statistics::Descriptive::Full->new();
+
+$stats->add_data(12,-13,-12,7,11,-4,-12,9,6,7,-9);
+
+print 'SD:     ',$stats->standard_deviation(),"\n";
+print 'Median: ',$stats->median(),"\n";
+print 'Min:    ',$stats->min(),"\n";
+print 'Max:    ',$stats->max(),"\n";
+
+
+
+ 
+Optional questions:
+ 
+3.Add a method to Microarray.pm called expression() which returns the expression value.
+#!/usr/bin/perl
+#PerlX-Q3
+#Author: Jessen Bredeson
+
+use strict;
+use warnings;
+
+use lib '.'; # Tell Perl to also look in current directory for modules
+use Microarray;
+
+# NOTE: there are two solutions to this problem depending on the context of our
+#   situation: 1) if we are the authors of Microarray.pm, we can modify Microarray.pm
+#   directly; however, 2) if we are not the authors and we need a new feature in
+#   Microarray.pm, and we do not care to contact the author and wait for the feature
+#   to be added, we can insert our own method on-the-fly from within our own script,
+#   but we need to be very aware of the internals/workings of the module/object.  I
+#   will demonstrate the latter solution here:
+
+my $microarray = Microarray->new(
+    'gene'   => 'HOX1',
+    'tissue' => 'endoderm',
+    'expression' => 1.612858,
+    );
+
+print "Gene:       ",$microarray->gene(),"\n";
+print "Tissue:     ",$microarray->tissue(),"\n";
+print "Expression: ",$microarray->expression(),"\n";
+
+sub Microarray::expression {
+    my $self = shift;
+    return ${$self}{'expression'};
+}
+
+# RESULT:
+# ------------------------------------------------------------
+# Gene:       HOX1
+# Tissue:     endoderm
+# Expression: 1.612858
+
+
+
+
+ 
+4. Currently, calling $a = $m->gene() gets the value of gene in the object $m. Modify the gene() method such that if you call gene() with an argument, it will set the value of gene to be that argument.
+eg:
+$m->gene('FOXP1');  # this should set gene name to 'FOXP1'
+print $m->gene();   # this should print the value 'FOXP1'
+
+
+
+#!/usr/bin/perl
+#PerlX-Q4
+#Author: Jessen Bredeson
+
+use strict;
+use warnings;
+
+use lib '.'; # Tell Perl to also look in current directory for modules
+use Microarray;
+
+# NOTE: Like the previous problem, there are two solutions to this problem: we can
+#   either modify Microarray.pm directly if we wrote it, or if we didn't we can
+#   modify the function in our code on-the-fly, BUT BE CAREFUL THAT THIS DOESN'T
+#   BREAK YOUR CODE ELSEWHERE!!!  This inheretance of a class method, followed by
+#   modification (which sounds very Darwinian ;-D ) is what CS people call "Polymorphism"
+
+my $microarray = Microarray->new(
+    'gene'   => 'HOX1',
+    'tissue' => 'endoderm',
+    'expression' => 1.612858,
+    );
+
+print "Old name: ",$microarray->gene(),"\n";
+$microarray->gene('Hox1');
+print "New name: ",$microarray->gene(),"\n";
+
+
+sub Microarray::gene {
+    my $self = shift;
+    ${$self}{'gene'} = shift if @_;
+    return ${$self}{'gene'};
+}
+
+# RESULT:
+# ------------------------------------------------------------=
+# Old name: HOX1

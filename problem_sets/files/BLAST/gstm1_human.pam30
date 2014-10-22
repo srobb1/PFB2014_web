@@ -1,0 +1,25 @@
+#Query: Name: sp|P09488|GSTM1_HUMAN; Length: 218
+#Database: Name: "GP/9606.9558/RefSeq_protein"; Entries: 55972; Residues: 37140131
+#Parameters:   allowgaps: yes;   gapopen: 9;   matrix: PAM30;   gapext: 1;   expect: 5; 
+#Hits:	ACC     	E()	bits	f_id	a_len	descr
+NP_000552	0	658.0	1.000	218	glutathione S-transferase Mu 1 isoform 1 [Homo sapiens]
+NP_000841	0	572.0	0.864	218	glutathione S-transferase Mu 4 isoform 1 [Homo sapiens]
+XP_005270839	3e-179	543.0	1.000	184	PREDICTED: glutathione S-transferase Mu 1 isoform X2 [Homo sapiens]
+NP_000839	1e-176	541.0	0.844	218	glutathione S-transferase Mu 2 isoform 1 [Homo sapiens]
+NP_000842	4e-175	537.0	0.877	218	glutathione S-transferase Mu 5 [Homo sapiens]
+NP_666533	2e-168	514.0	0.830	218	glutathione S-transferase Mu 1 isoform 2 [Homo sapiens]
+NP_671489	2e-161	498.0	0.874	189	glutathione S-transferase Mu 4 isoform 2 [Homo sapiens]
+NP_001135840	6e-143	449.0	0.825	189	glutathione S-transferase Mu 2 isoform 2 [Homo sapiens]
+NP_000840	6e-131	421.0	0.723	216	glutathione S-transferase Mu 3 [Homo sapiens]
+XP_005270840	3e-95	311.0	1.000	114	PREDICTED: glutathione S-transferase Mu 1 isoform X3 [Homo sapiens]
+XP_005270842	2e-61	217.0	0.809	114	PREDICTED: glutathione S-transferase Mu 5 isoform X2 [Homo sapiens]
+NP_000843	0.009	39.2	0.439	38	glutathione S-transferase P [Homo sapiens]
+NP_001269520	0.17	35.0	0.593	27	SLAM family member 7 isoform e [Homo sapiens]
+XP_005245443	0.18	35.0	0.593	27	PREDICTED: SLAM family member 7 isoform X2 [Homo sapiens]
+NP_000837	2.6	31.2	0.356	82	glutathione S-transferase A2 [Homo sapiens]
+NP_001503	3.5	30.8	0.609	23	glutathione S-transferase A4 [Homo sapiens]
+XP_006715135	4.6	30.3	0.600	25	PREDICTED: glutathione S-transferase A3 isoform X1 [Homo sapiens]
+NP_714543	4.7	30.3	0.600	25	glutathione S-transferase A5 [Homo sapiens]
+NP_000838	4.7	30.3	0.600	25	glutathione S-transferase A3 [Homo sapiens]
+NP_665683	4.7	30.3	0.600	25	glutathione S-transferase A1 [Homo sapiens]
+XP_005249091	4.7	30.3	0.600	25	PREDICTED: glutathione S-transferase A1 isoform X1 [Homo sapiens]

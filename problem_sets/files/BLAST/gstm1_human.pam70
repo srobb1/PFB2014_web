@@ -1,0 +1,27 @@
+#Query: Name: sp|P09488|GSTM1_HUMAN; Length: 218
+#Database: Name: "GP/9606.9558/RefSeq_protein"; Entries: 55972; Residues: 37140131
+#Parameters:   gapext: 1;   matrix: PAM70;   expect: 5;   gapopen: 10;   allowgaps: yes; 
+#Hits:	ACC     	E()	bits	f_id	a_len	descr
+NP_000552	0	563.0	1.000	218	glutathione S-transferase Mu 1 isoform 1 [Homo sapiens]
+NP_000841	7e-167	501.0	0.867	218	glutathione S-transferase Mu 4 isoform 1 [Homo sapiens]
+NP_000839	1e-159	482.0	0.844	218	glutathione S-transferase Mu 2 isoform 1 [Homo sapiens]
+NP_000842	2e-156	474.0	0.876	218	glutathione S-transferase Mu 5 [Homo sapiens]
+XP_005270839	7e-154	464.0	1.000	184	PREDICTED: glutathione S-transferase Mu 1 isoform X2 [Homo sapiens]
+NP_666533	1e-144	439.0	0.830	218	glutathione S-transferase Mu 1 isoform 2 [Homo sapiens]
+NP_671489	2e-141	432.0	0.878	189	glutathione S-transferase Mu 4 isoform 2 [Homo sapiens]
+NP_001135840	1e-129	401.0	0.825	189	glutathione S-transferase Mu 2 isoform 2 [Homo sapiens]
+NP_000840	7e-126	393.0	0.731	216	glutathione S-transferase Mu 3 [Homo sapiens]
+XP_005270840	2e-82	268.0	1.000	114	PREDICTED: glutathione S-transferase Mu 1 isoform X3 [Homo sapiens]
+XP_005270842	8e-57	198.0	0.807	114	PREDICTED: glutathione S-transferase Mu 5 isoform X2 [Homo sapiens]
+NP_055300	3e-06	50.1	0.299	163	hematopoietic prostaglandin D synthase [Homo sapiens]
+NP_000843	1e-05	48.4	0.273	153	glutathione S-transferase P [Homo sapiens]
+NP_000837	0.001	41.7	0.383	93	glutathione S-transferase A2 [Homo sapiens]
+NP_000838	0.21	34.5	0.379	82	glutathione S-transferase A3 [Homo sapiens]
+NP_665683	0.52	33.3	0.373	82	glutathione S-transferase A1 [Homo sapiens]
+XP_005249091	0.52	33.3	0.373	82	PREDICTED: glutathione S-transferase A1 isoform X1 [Homo sapiens]
+XP_006715135	0.89	32.4	0.600	25	PREDICTED: glutathione S-transferase A3 isoform X1 [Homo sapiens]
+NP_714543	0.94	32.4	0.600	25	glutathione S-transferase A5 [Homo sapiens]
+NP_001503	1.3	32.0	0.442	43	glutathione S-transferase A4 [Homo sapiens]
+NP_001269520	3	30.7	0.593	27	SLAM family member 7 isoform e [Homo sapiens]
+XP_005245443	3.3	30.7	0.593	27	PREDICTED: SLAM family member 7 isoform X2 [Homo sapiens]
+NP_031385	4.7	30.3	0.478	18	protein CASC3 [Homo sapiens]
