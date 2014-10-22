@@ -8,8 +8,6 @@ CGI Problem set
 
 use strict;
 use warnings;
-
-use CGI::Carp::DebugScreen;
 use CGI ':standard';
 
 print header;
@@ -46,7 +44,6 @@ use strict;
 use warnings;
 
 use CGI ':standard';
-use CGI::Carp::DebugScreen;
 
 print header;
 
