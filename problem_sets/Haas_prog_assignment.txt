@@ -1,0 +1,36 @@
+chomp;  # removes newlines
+my @x = split(/\s+/, $text_line); # split line into fields based on whitespace
+
+# counting GC characters
+my $count = 0;
+while ($sequence =~ /[GC]/ig) {
+      $count++;
+}
+      Perl Programming assignment:
+
+      		  Given 'Trinity.fasta' file as input: ( in ~/pfb_data on AWS )
+	                                 (helper script as ~/pfb_data/my_script.pl)
+
+      		  	1.  print each transcript accession and sequence length.
+			    	  ie. 
+				  c0_g1_i1    1163
+				  c1_g1_i1    784
+				  c3_g1_i1    1882
+				  c4_g1_i1    827
+ 				  c5_g1_i1    1465
+				  c6_g1_i1    1282
+
+
+			2.  calculate each transcript's %GC content
+
+
+			c0_g1_i1		433 1163      = 37.2%
+			c1_g1_i1		286 784	      = 36.5%
+			c3_g1_i1		713 1882      = 37.9%
+			c4_g1_i1		325 827	      = 39.3%
+			c5_g1_i1		589 1465      = 40.2%
+			c6_g1_i1		473 1282      = 36.9%
+
+			3. compute average seq length  (Average contig: 1085.47)
+
+			4. compute N50 value   (Contig N50: 1788)
