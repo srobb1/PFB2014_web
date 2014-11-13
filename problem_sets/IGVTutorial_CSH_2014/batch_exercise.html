@@ -1,0 +1,122 @@
+<html>
+
+<head>
+ 
+<meta http-equiv="Content-Type" content="text/html;" />
+
+<style>
+ 
+ .command-line {
+  font-size: large;
+  color: #990000
+ }
+ 
+</style>
+</head>
+
+<body>
+ 
+<h1>Automating Image Generation for Variant Call Review</h1>
+
+<p>In this excercise we will start with a VCF file and generate an igv batch script to make screenshots for each variant.
+After creating the batch file, we will run it from the run it from the Tools menu in IGV and examine the resulting screenshots.</p>
+
+<h2>Data</h2>
+
+Data for this exercise is located in the &#34;data/snps&#34; folder.  It is derived from whole genome alignments from
+the 1000 genomes pilot project.   The genome assembly used for these alignments is human (hg18).
+
+
+<h2>Overview</h2>
+
+
+<p>To create the batch file we need to transform a vcf file that looks like this</p>
+
+<pre>
+## Various header lines
+#CHROM	POS	ID	REF	ALT	�
+1	63635328	.	G	A	�	
+1	63647603	.	C	T	�.
+...
+    </pre>
+
+
+
+<p>into an igv batch file that looks like this</p>
+
+<pre>
+goto 1:63635328
+sort base
+snapshot
+goto 1:63647603
+sort base
+snapshot
+...
+
+    </pre>
+
+<p>
+Before beginning examine the variant.vcf file in a text editor.    Our strategy will be to first remove the header
+lines, then use the chromosome and position information in the first 2 columns to generate �goto� statements.
+The sort and snapshot commands are then easily added.  There are many ways to accomplish this,  for this exercise we
+will use the unix utilities &#34;grep&#34; and &#34;awk&#34;
+    </p>
+
+
+<h2>Step by Step</h2>
+
+<p>Open a terminal window </p>
+
+<p>Create a directory to dump the images. The command below will create the directory under your home directory.</p>
+
+<p class="command-line"> mkdir ~/images </p>
+
+This directory can be placed anywhere, but the instructions below assume it has been created home directory.
+
+<p>&#34;cd&#34; to the data/snps directory</p>
+
+<p>Use grep to remove the header lines</p>
+
+<p class="command-line">grep &#94;v ^# variants.vcf</p>
+
+<p><i>Notes:  <ul>
+    <li>the &#34;-v&#34; option causes grep to invert the match, i.e. lines not matching the pattern are output.</li>
+    <li>The &#94; symbol indicates that the line must start with #, as opposed to finding # anywhere in the line.
+        </li>
+    </ul>
+    </i>
+</p>
+
+<p>The output from the grep command above should remove all header lines.   Now pipe this output to awk and use
+    the &#34;print&#34; statement to format and output the batch commands. </p>
+
+<p class="command-line">grep -v &#94;# variants.vcf | awk &#39;{print &#34;goto&nbsp;&#34; $1 &#34;:&#34; $2 &#34;\nsort base\nsnapshot&#34;}&#39; </p>
+
+<p>The output looks like an igv batch file!  It will work as is, but the filenames will be auto-generated from the
+    genomic location.   We can do a little better by generating our own file names incorporating the ref and alt columns.
+    </p>
+
+<p class="command-line">grep -v &#94;# variants.vcf | awk &#39;{print &#34;goto &nbsp;&#34; $1 &#34;:&#34; $2 &#34;\nsort base\nsnapshot g.&#34; $1 &#34;_&#34; $2 &#34;_&#34; $4 &#34;>&#34; $5 &#34;.png&#34;}&#39;</p>
+
+Now pipe the result to a file (use the up-arrow key to avoid retyping the command)
+
+<p class="command-line">grep -v &#94;# variants.vcf | awk &#39;{print &#34;goto &nbsp;&#34; $1 &#34;:&#34; $2 &#34;\nsort base\nsnapshot g.&#34; $1 &#34;_&#34; $2 &#34;_&#34; $4 &#34;>&#34; $5 &#34;.png&#34;}&#39; &nbsp; &gt; igv.batch</p>
+
+<p>If we run the script as-is it will dump the images into the &lt;user home&gt; directory.   To specify a directory
+    for the images edit the igv.batch in a plain text editor and add the following line at the top
+    (replace &lt;user name&gt; with your user name).   <b>NOTE: do not use textedit!</b>
+
+<p class="command-line">snapshotDirectory /Users/&lt;user name&gt;/images</p>
+     
+<p>Start IGV and load the bam file NA12878.SLX.sample.bam from the file menu  (File &gt; Load from file...)
+
+<p>Run the batch file from the tools menu  (Tools > Run Batch Script)</p>
+
+<p>Upon completion examine the snapshots in the &#34;images&#34; directory</p>
+
+
+
+
+</body>
+
+</html>

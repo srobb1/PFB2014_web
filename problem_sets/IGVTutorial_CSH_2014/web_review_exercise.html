@@ -1,0 +1,132 @@
+<html>
+
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html;"/>
+
+    <style>
+
+        .command-line {
+            font-size: large;
+            color: #990000
+        }
+
+    </style>
+</head>
+
+<body>
+
+<h1>Creating a Web Site for Variant Call Review</h1>
+
+<p>In this exercise we will generate an html page for variant review using igv html links.</p>
+
+<p>IGV can be controlled from an external program by writing commands to its port, 60151 by default.
+    A subset of these commands are available via http “get” requests, which makes it possible to control
+    IGV from a web page.   In this exercise we will make use of “load” and “goto” commands to generate
+    a page for manual review of variant sites.</p>
+
+<p>The steps to generate the page are similar to generating the batch script.  The shell of the web page is provided in the file "variantReview.html", we just
+need to generate the content.  This will consist of a single link to load our bam file,
+followed by a "goto" link for each variant.</p>
+
+<p> Example &#34;load&#34; URL </p>
+<pre>
+http://localhost:60151/load?file=http://www.broadinstitute.org/igvdata/annotations/hg18/conservation/pi.12mer.wig.tdf
+</pre>
+
+<p>Example &#34;goto&#34;  URL </p>
+
+<pre>
+http://localhost:60151/goto?locus=1:63635328
+
+</pre>
+
+
+<p>NOTE:  In the instructions below insert your Mac user name wherever you see &lt;USER NAME&gt;.</p>
+
+
+<h2>Part 1 – load bam file</h2>
+
+
+<p>The first step is to make the bam file accessible by our web server.  Do this by copying NA12878.SLX.sample.bam and
+    NA12878.SLX.sample.bam.bai to your Sites folder.</p>
+
+<p class="command-line">&#34;cd&#34; to the data/snps folder.</p>
+
+<p class="command-line">cp NA12878.SLX.sample.bam ~/Sites/.</p>
+
+<p class="command-line">cp NA12878.SLX.sample.bam.bai ~/Sites/.</p>
+
+<p><i>Note: Alternatively we could have setup virtual directories or symbolic links to avoid the copy.</i></p>
+
+
+<p>The bam file should now be accessible with the url</p>
+
+<pre>http://localhost/~&lt;USER NAME&gt;/NA12878.SLX.sample.bam.</pre>
+
+<p>Make a backup of variantReview.html</p>
+
+<p class="command-line">cp variantReview.html variantReview.bak</p>
+
+<p>Edit variantReview.html with a plain text editor (NOT TEXTEDIT) and replace the string YOUR_USERNAME_HERE
+    with your user name.   As an alternative to manually editing the file we can use &#34;sed&#34;.
+    For example, if your username were jrobinso</p>
+
+<p class="command-line">sed 's/YOUR_USERNAME_HERE/jrobinso/' variantReview.bak > variantReview.html
+
+<p>Before proceeding further lets verify that our load link works.    First copy the modified variantReview.html
+    file to your Sites folder to make it accessible to the web server</p>
+
+<p class="command-line">cp variantReview.html ~&lt;USER NAME&gt;/Sites/variantReview.html</p>
+
+<p>Next start IGV.  After IGV launches load the review page into a browser  with the link</p>
+
+<pre>http://localhost/~&lt;USER NAME&gt;/variantReview.html</pre>
+
+<p>Click the “Load Bam File” link.  The file should now be loaded in IGV.</p>
+
+<h2>Part 2 - generate variant list</h2>
+
+<p>The rest of the html will contain links to skip to each variant site.   The procedure for generating these links
+    is similar to that for batch file creation.  In this case we need to convert VCF lines such as</p>
+
+<pre>   1	63635328	.	G	A ... </pre>
+
+<p>to html anchor elements such as this</p>
+
+<pre>   &lt;a href=&#34;http://localhost:60151/goto?locus=1:63635328&#34;&gt;1:63635328&lt;/a&gt;&lt;br/&gt; </pre>
+
+                or the more informative
+
+<pre>     &lt;a href=&#34;http://localhost:60151/goto?locus=1:63635328&#34;&gt;1:63635328 G&gt;A&lt;/a&gt;&lt;br/&gt; </pre>
+
+<p>This can be done with the magic one-liner</p>
+
+<p class="command-line">grep -v &#94;# variants.vcf | awk '{print "&lt;a href=\&#34;http://localhost:60151/goto?locus=&#34; $1 &#34;:&#34; $2 &#34;\&#34;>&#34; $1 &#34;:&#34; $2 &#34;&nbsp;&nbsp;&#34; $4 &#34;&gt;&#34; $5  &#34;&lt;/a&gt;&#34;}&#39;  &gt; tmp.txt</p>
+
+<p>After executing the command above use a text editor copy and paste the contents of the tmp.txt file to 
+    variantReview.html in the place indicated (VARIANT LIST GOES HERE).</p>
+
+<p>Copy the updated variantReview.html to the Sites folder</p>
+
+<p class="command-line">cp variantReview.html ~&lt;USER NAME&gt;/Sites/variantReview.html</p>
+
+<p>Refresh the web page and use the links to control IGV.</p>
+
+<h2>Extra credit</h2>
+
+<p>Use the images generated in the batch exercise in place of the text links. For example</p>
+
+<pre>
+    &lt;a href=&34;http://localhost:60151/goto?locus=1:159461772&#34;&gt;&lt;img height=&#34;300&#34; width=&#34;300&#34; src=&#34;http://localhost/~&lt;user name&gt;/images/g.1:159461772_G%3ET.png&#34;/&gt;&lt;/a&gt;&lt;br/&gt;
+</pre>
+
+<p>Note:  you must move the images folder to Sites for this to work, i.e. from your home directory</p>
+
+<p class="command-line">mv images Sites</p>
+
+
+
+</body>
+
+</html>
